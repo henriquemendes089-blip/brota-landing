@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>Landing Page Profissional por R$ 689,90 · Pronta em 3 Dias · Brota Web</title>
+<meta name="description" content="Landing page profissional que faz seu negócio brotar: mobile-first, copy de venda, SEO e WhatsApp integrado. R$ 689,90 à vista ou 10x de R$ 79,50. Pronta em 3 dias úteis.">
+<meta name="theme-color" content="#060B08">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Brota Web">
+<meta property="og:title" content="Landing Page Profissional por R$ 689,90 · Pronta em 3 Dias · Brota Web">
+<meta property="og:description" content="A Brota Web planta a landing page que faz seu negócio crescer. Pagamento único, sem mensalidade, entrega em 3 dias úteis.">
+<link rel="icon" type="image/png" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"ProfessionalService",
+  "name":"Brota Web","description":"Criação de landing pages profissionais de alta conversão. Pronta em 3 dias úteis.",
+  "url":"https://brotaweb.com.br","telephone":"+5537999061651","priceRange":"R$ 689,90",
+  "areaServed":"BR","address":{"@type":"PostalAddress","addressLocality":"Divinópolis","addressRegion":"MG","addressCountry":"BR"},
+  "sameAs":["https://instagram.com/brotaweb"]
+}
+</script>
+
+<style>
+:root{
+  --bg:#060B08;--bg2:#0A130D;
+  --green:#16A34A;--green-d:#15803D;--lime:#4ADE80;--neon:#A3E635;--fruit:#F5C451;
+  --text:#EAF5EE;--muted:rgba(234,245,238,.58);--faint:rgba(234,245,238,.35);
+  --line:rgba(163,230,53,.18);--card:rgba(255,255,255,.025);
+  --wa:#25D366;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+@media(hover:none){body{cursor:auto}}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--neon);color:#06210f}
+h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.05;font-weight:800;letter-spacing:-.02em}
+.mono{font-family:'Space Grotesk',monospace}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.accent{color:var(--lime)}.accent-f{color:var(--fruit)}
+
+/* fundo webgl */
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+.bg-fallback{position:fixed;inset:0;z-index:0;background:radial-gradient(60% 50% at 72% 16%,rgba(22,163,74,.16),transparent 70%),radial-gradient(50% 60% at 18% 84%,rgba(163,230,53,.10),transparent 70%),var(--bg)}
+.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 100% at 50% 38%,transparent 56%,rgba(0,0,0,.6) 100%)}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:overlay}
+.grain svg{width:100%;height:100%}
+
+/* cursor */
+#cur{position:fixed;top:0;left:0;z-index:120;width:36px;height:36px;border:1px solid rgba(163,230,53,.6);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;transition:width .25s,height .25s,background .25s,border-color .25s;mix-blend-mode:difference}
+#curdot{position:fixed;top:0;left:0;z-index:121;width:5px;height:5px;background:var(--neon);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+#cur.grow{width:70px;height:70px;background:rgba(163,230,53,.12);border-color:transparent}
+@media(hover:none){#cur,#curdot{display:none}}
+
+/* loader */
+#loader{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .8s,visibility .8s}
+#loader.done{opacity:0;visibility:hidden}
+.loader-mark{width:60px;animation:breathe 2.6s ease-in-out infinite}
+.loader-word{font-family:'Plus Jakarta Sans';font-weight:800;font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--lime);text-indent:.5em}
+.loader-track{width:190px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.loader-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--neon))}
+.loader-pct{font-family:'Space Grotesk';font-size:12px;color:var(--muted)}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.08);opacity:1}}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Plus Jakarta Sans';font-weight:800;border-radius:12px;cursor:none;border:1px solid transparent;transition:transform .25s,box-shadow .25s,background .25s,border-color .25s,color .25s;line-height:1}
+.btn svg{width:18px;height:18px}
+.btn--accent{background:linear-gradient(90deg,var(--green),var(--neon));color:#06210f}
+.btn--accent:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(163,230,53,.28)}
+.btn--wa{background:var(--wa);color:#fff}.btn--wa svg{fill:#fff}
+.btn--wa:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(37,211,102,.3)}
+.btn--ghost{background:transparent;border-color:var(--line);color:var(--text)}
+.btn--ghost:hover{border-color:var(--neon);color:var(--neon)}
+.btn--xl{padding:15px 26px;font-size:15px}
+.btn--xxl{padding:17px 30px;font-size:16px}
+.btn--block{width:100%}
+
+/* announce */
+.announce{position:relative;z-index:80;background:linear-gradient(90deg,rgba(22,163,74,.22),rgba(163,230,53,.12));border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.announce__inner{max-width:1160px;margin:0 auto;padding:9px 28px;text-align:center;font-size:13px;color:var(--text);font-weight:300;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+.announce strong{color:var(--neon);font-weight:700}
+.announce a{color:var(--lime);font-weight:700}
+.announce__dot{width:7px;height:7px;border-radius:50%;background:var(--neon);box-shadow:0 0 0 0 rgba(163,230,53,.5);animation:pdot 2s infinite}
+@keyframes pdot{0%{box-shadow:0 0 0 0 rgba(163,230,53,.5)}70%{box-shadow:0 0 0 8px rgba(163,230,53,0)}100%{box-shadow:0 0 0 0 rgba(163,230,53,0)}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:100;transition:background .4s,backdrop-filter .4s,border-color .4s}
+nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav__in{max-width:1160px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:30px;height:30px;object-fit:contain}
+.brand b{font-family:'Plus Jakarta Sans';font-weight:800;font-size:15px}
+.nav__links{display:flex;gap:26px}
+.nav__links a{font-family:'Plus Jakarta Sans';font-size:14px;font-weight:600;color:var(--muted);transition:color .2s}
+.nav__links a:hover{color:var(--text)}
+.nav__right{display:flex;align-items:center;gap:14px}
+.sound-btn{display:flex;align-items:center;gap:7px;background:none;border:none;color:var(--muted);cursor:none;font-family:'Space Grotesk';font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.sound-bars{display:flex;align-items:flex-end;gap:2px;height:13px}
+.sound-bars i{width:2px;background:var(--lime);height:4px;border-radius:2px}
+.sound-btn.on .sound-bars i{animation:eq .8s ease-in-out infinite}
+.sound-bars i:nth-child(2){animation-delay:.15s}.sound-bars i:nth-child(3){animation-delay:.3s}.sound-bars i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:4px}50%{height:13px}}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:6px}
+.nav-toggle span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+
+/* layout base */
+.content{position:relative;z-index:10}
+.section{position:relative;padding:100px 0;z-index:10}
+.section--soft{background:rgba(10,19,13,.55);backdrop-filter:blur(2px)}
+.eyebrow{font-family:'Space Grotesk';font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--neon);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--neon)}
+.sec-head{max-width:680px;margin:0 auto 56px;text-align:center}
+.sec-head h2{font-size:clamp(30px,5vw,56px);line-height:1.05}
+.sec-head .lead{margin-top:20px;font-size:clamp(16px,1.7vw,19px);font-weight:300;color:var(--muted);line-height:1.65}
+
+/* HERO */
+.hero{position:relative;z-index:10;padding:70px 0 90px}
+.hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+.hero__live{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-size:12px;letter-spacing:.06em;color:var(--lime);border:1px solid var(--line);background:rgba(163,230,53,.06);padding:7px 14px;border-radius:30px;margin-bottom:24px}
+.hero__live-dot{width:7px;height:7px;border-radius:50%;background:var(--neon);animation:pdot 2s infinite}
+.hero h1{font-size:clamp(38px,5.6vw,72px);line-height:1.0;letter-spacing:-.03em}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln span{display:block;transform:translateY(110%)}
+.hero__sub{margin-top:24px;font-size:clamp(16px,1.7vw,19px);font-weight:300;color:var(--muted);line-height:1.6;max-width:54ch}
+.hero__sub strong{color:var(--lime);font-weight:500}
+.pillars{list-style:none;margin:30px 0 0;display:flex;flex-direction:column;gap:14px}
+.pillars li{display:flex;gap:13px;align-items:flex-start}
+.pillars .pi{flex-shrink:0;width:40px;height:40px;border-radius:11px;background:rgba(163,230,53,.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.pillars .pi svg{width:20px;height:20px;stroke:var(--neon);fill:none}
+.pillars strong{display:block;font-family:'Plus Jakarta Sans';font-weight:700;font-size:15px}
+.pillars span{font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.5}
+.hero__price{display:flex;align-items:center;gap:18px;margin:32px 0 24px;padding:18px 22px;border:1px solid var(--line);border-radius:16px;background:var(--card);backdrop-filter:blur(6px)}
+.hero__price-tag{display:flex;align-items:baseline;gap:4px;font-family:'Plus Jakarta Sans';font-weight:800;color:var(--text)}
+.hero__price-tag .multi{font-size:18px;color:var(--lime)}
+.hero__price-tag .currency{font-size:20px}
+.hero__price-tag .amount{font-size:48px;line-height:1}
+.hero__price-meta{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.hero__price-meta strong{color:var(--text)}
+.hero__price-meta .strike{text-decoration:line-through;opacity:.6}
+.hero__ctas{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:24px}
+.hero__trust{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+.hero__trust div{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--muted);font-weight:300}
+.hero__trust strong{color:var(--text);font-weight:600}
+.hero__trust svg{width:17px;height:17px;stroke:var(--neon);fill:none;flex-shrink:0}
+.hero__social{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.avatars{display:flex}
+.avatars span{width:34px;height:34px;border-radius:50%;border:2px solid var(--bg);margin-left:-9px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-size:11px;font-weight:700;color:#06210f;background:var(--lime)}
+.avatars span:first-child{margin-left:0}
+.avatars span:nth-child(2){background:var(--fruit)}.avatars span:nth-child(3){background:#7dd3fc}.avatars span:nth-child(4){background:#fca5a5}.avatars span:nth-child(5){background:rgba(255,255,255,.12);color:var(--text)}
+.rating-stars{display:flex;gap:2px}
+.rating-stars svg{width:15px;height:15px;fill:var(--fruit)}
+.rating-text{font-size:13px;color:var(--muted)}
+.rating-text strong{color:var(--text)}
+
+/* hero stage (cards de vidro) */
+.stage{position:relative;display:flex;flex-direction:column;gap:16px}
+.gcard{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(163,230,53,.05),rgba(255,255,255,.02));backdrop-filter:blur(10px);padding:20px}
+.tl__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.tl__title{font-family:'Plus Jakarta Sans';font-weight:700;font-size:15px}
+.tl__live{font-family:'Space Grotesk';font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--neon);border:1px solid var(--line);padding:3px 9px;border-radius:20px}
+.tl__steps{display:flex;flex-direction:column;gap:14px}
+.tl__step{display:flex;gap:12px;align-items:center}
+.tl__dot{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tl__dot svg{width:14px;height:14px;stroke:var(--neon);fill:none}
+.tl__step--done .tl__dot{background:var(--neon);border-color:var(--neon)}.tl__step--done .tl__dot svg{stroke:#06210f}
+.tl__step--cur .tl__dot{border-color:var(--neon);box-shadow:0 0 0 4px rgba(163,230,53,.12)}
+.tl__step--cur .tl__dot::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--neon)}
+.tl__day{font-family:'Space Grotesk';font-size:11px;color:var(--muted)}
+.tl__label{font-size:14px;font-weight:500}
+.badgecard{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.badgecard .bc-l .bt{font-family:'Space Grotesk';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.badgecard .bc-l .bp{font-family:'Plus Jakarta Sans';font-weight:800;font-size:32px}
+.badgecard .bc-l .bp small{font-size:.5em}
+.badgecard .bc-r{font-family:'Plus Jakarta Sans';font-weight:700;font-size:13px;color:var(--neon);text-align:right}
+
+/* logos marquee */
+.logos{padding:46px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:10;background:rgba(6,11,8,.4)}
+.logos__title{text-align:center;font-family:'Space Grotesk';font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.logos__vp{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.logos__track{display:flex;gap:50px;width:max-content;animation:marquee 32s linear infinite}
+.logos__track span{font-family:'Plus Jakarta Sans';font-weight:800;font-size:19px;color:rgba(234,245,238,.4);white-space:nowrap;letter-spacing:-.01em}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* comparativo */
+.compare{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.compare table{width:100%;border-collapse:collapse;min-width:680px}
+.compare th,.compare td{padding:15px 16px;text-align:left;font-size:14px;border-bottom:1px solid rgba(255,255,255,.05)}
+.compare thead th{font-family:'Plus Jakarta Sans';font-weight:700;font-size:14px;color:var(--muted)}
+.compare .us{background:rgba(163,230,53,.06)}
+.compare th.us .col-name{color:var(--lime)}
+.compare .col-tag{display:inline-block;font-family:'Space Grotesk';font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#06210f;background:var(--neon);padding:2px 8px;border-radius:20px;margin-left:6px}
+.compare td:first-child{color:var(--muted);font-weight:500}
+.compare td.us{color:var(--text);font-weight:600}
+.compare .hl{color:var(--neon);font-weight:800}
+.compare td.no{color:rgba(252,165,165,.85)}
+.compare-cta{text-align:center;margin-top:34px}
+.compare-cta p{font-size:16px;font-weight:300;color:var(--muted);margin-bottom:20px}
+.compare-cta strong{color:var(--text)}
+/* comparativo · cards mobile */
+.compare__mobile{display:none;flex-direction:column;gap:16px}
+.cmc{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:20px 22px}
+.cmc--us{background:linear-gradient(180deg,rgba(22,163,74,.18),rgba(163,230,53,.07));border-color:rgba(163,230,53,.42)}
+.cmc__head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.cmc__name{font-family:'Plus Jakarta Sans';font-weight:800;font-size:18px}
+.cmc--us .cmc__name{color:var(--lime)}
+.cmc__tag{font-family:'Space Grotesk';font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap}
+.cmc__tag--us{background:var(--neon);color:#06210f}
+.cmc__tag--alt{background:rgba(255,255,255,.08);color:var(--muted)}
+.cmc__rows{display:flex;flex-direction:column;gap:11px}
+.cmc__row{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;font-weight:300;color:var(--text);line-height:1.45}
+.cmc__row svg{width:18px;height:18px;flex-shrink:0;margin-top:1px}
+.cmc__row strong{font-weight:700}
+.cmc__row--yes svg{stroke:var(--neon)}
+.cmc__row--no{color:var(--muted)}
+.cmc__row--no svg{stroke:#fca5a5}
+@media(max-width:760px){
+  .compare{display:none}
+  .compare__mobile{display:flex}
+}
+
+/* features */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.feature{padding:26px 22px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(22,163,74,.14),rgba(163,230,53,.06));transition:transform .35s,border-color .35s,background .35s}
+.feature:hover{transform:translateY(-5px);border-color:var(--neon);background:linear-gradient(180deg,rgba(22,163,74,.24),rgba(163,230,53,.10))}
+.feature__ic{width:44px;height:44px;border-radius:11px;background:rgba(163,230,53,.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.feature__ic svg{width:22px;height:22px;stroke:var(--neon);fill:none}
+.feature h3{font-size:17px;margin-bottom:8px}
+.feature p{font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.6}
+
+/* processo */
+.process{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{padding:30px 26px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(22,163,74,.14),rgba(163,230,53,.06));position:relative;transition:border-color .35s,background .35s}
+.step:hover{border-color:var(--neon);background:linear-gradient(180deg,rgba(22,163,74,.24),rgba(163,230,53,.10))}
+.step__num{font-family:'Plus Jakarta Sans';font-weight:800;font-size:15px;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--neon));color:#06210f;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.step__day{font-family:'Space Grotesk';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--neon);margin-bottom:10px}
+.step h3{font-size:19px;margin-bottom:10px}
+.step p{font-size:14px;font-weight:300;color:var(--muted);line-height:1.6}
+
+/* preço */
+.pricing{max-width:560px;margin:0 auto;border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,rgba(163,230,53,.07),rgba(255,255,255,.02));backdrop-filter:blur(10px);padding:40px 34px;position:relative;text-align:center}
+.pricing__badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:'Space Grotesk';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#06210f;background:var(--neon);padding:6px 16px;border-radius:30px;font-weight:700;white-space:nowrap}
+.pricing__title{font-size:25px;margin:8px 0 8px}
+.pricing__sub{font-size:15px;font-weight:300;color:var(--muted);margin-bottom:24px}
+.pricing__price{display:flex;align-items:baseline;justify-content:center;gap:3px;font-family:'Plus Jakarta Sans';font-weight:800}
+.pricing__price .currency{font-size:26px;color:var(--muted)}
+.pricing__price .amount{font-size:76px;line-height:1}
+.pricing__price .cents{font-size:30px}
+.pricing__alt{font-size:14px;color:var(--muted);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:7px}
+.pricing__alt svg{width:15px;height:15px;stroke:var(--lime);fill:none;flex-shrink:0}
+.pricing__alt strong{color:var(--lime)}
+.pricing__list{list-style:none;text-align:left;margin:28px 0;display:grid;gap:12px}
+.pricing__list li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;font-weight:300;color:var(--text);line-height:1.5}
+.pricing__list svg{width:19px;height:19px;stroke:var(--neon);fill:none;flex-shrink:0;margin-top:1px}
+.pricing__list strong{font-weight:700}
+.pricing__cta{display:flex;flex-direction:column;gap:11px}
+.pricing__safe{margin-top:18px;font-size:12.5px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:7px}
+.pricing__safe svg{width:15px;height:15px;stroke:var(--neon);fill:none}
+
+/* depoimentos */
+.tms{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tm{padding:28px 26px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.tm__stars{display:flex;gap:2px;margin-bottom:16px}
+.tm__stars svg{width:17px;height:17px;fill:var(--fruit)}
+.tm__text{font-size:15px;font-weight:300;line-height:1.65;color:var(--text);margin-bottom:20px}
+.tm__author{display:flex;align-items:center;gap:12px}
+.tm__av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;color:#fff;font-size:14px}
+.tm__name{font-family:'Plus Jakarta Sans';font-weight:700;font-size:15px}
+.tm__role{font-size:13px;color:var(--muted)}
+
+/* faq */
+.faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq__item{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.faq__q{cursor:none;list-style:none;padding:20px 22px;font-family:'Plus Jakarta Sans';font-weight:700;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq__q::-webkit-details-marker{display:none}
+.faq__q::after{content:'+';font-size:22px;color:var(--neon);transition:transform .3s;flex-shrink:0}
+.faq__item[open] .faq__q::after{transform:rotate(45deg)}
+.faq__a{padding:0 22px 22px;font-size:14.5px;font-weight:300;color:var(--muted);line-height:1.7}
+.faq__a strong{color:var(--text);font-weight:600}
+.faq__a a{color:var(--lime);font-weight:600;text-decoration:underline}
+
+/* cta final */
+.ctaf{position:relative;z-index:10;padding:100px 0;text-align:center}
+.ctaf h2{font-size:clamp(32px,5.5vw,64px);line-height:1.02;max-width:16ch;margin:0 auto}
+.ctaf p{margin:22px auto 0;font-size:17px;font-weight:300;color:var(--muted);max-width:52ch;line-height:1.6}
+.ctaf__btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.ctaf__hint{margin-top:18px;font-family:'Space Grotesk';font-size:12px;letter-spacing:.06em;color:var(--neon)}
+
+/* footer */
+footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var(--line)}
+.foot__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px}
+.foot__brand img{width:42px;margin-bottom:14px}
+.foot__brand .sl{font-family:'Plus Jakarta Sans';font-weight:800;font-size:18px;margin-bottom:10px}
+.foot__about{font-size:14px;font-weight:300;color:var(--muted);line-height:1.6;max-width:34ch}
+.foot__title{font-family:'Space Grotesk';font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.foot__list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.foot__list a{font-size:14px;font-weight:300;color:var(--text);transition:color .2s,padding-left .2s}
+.foot__list a:hover{color:var(--neon);padding-left:5px}
+.foot__contact a{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--text);margin-bottom:12px;font-weight:300}
+.foot__contact svg{width:17px;height:17px;fill:var(--lime)}
+.foot__bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'Space Grotesk';font-size:12px;color:var(--muted)}
+
+/* whatsapp fab + mobile sticky */
+.fab{position:fixed;bottom:84px;right:22px;z-index:90;display:flex;align-items:center;gap:10px;background:var(--wa);color:#fff;padding:12px 18px 12px 14px;border-radius:40px;box-shadow:0 12px 30px rgba(37,211,102,.4);transition:transform .3s}
+.fab:hover{transform:translateY(-2px) scale(1.03)}
+.fab svg{width:26px;height:26px;fill:#fff}
+.fab__label{font-family:'Plus Jakarta Sans';font-weight:700;font-size:14px}
+@media(min-width:981px){.fab{bottom:24px}}
+.msticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:95;background:rgba(6,11,8,.95);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));align-items:center;justify-content:space-between;gap:12px}
+.msticky__price .from{display:block;font-size:10px;color:var(--muted);font-family:'Space Grotesk';letter-spacing:.05em}
+.msticky__price .val{font-family:'Plus Jakarta Sans';font-weight:800;font-size:19px}
+.msticky__price .alt{display:block;font-size:11px;color:var(--lime)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px)}
+
+@media(max-width:980px){
+  .msticky{display:flex}
+  body{padding-bottom:78px}
+}
+@media(max-width:860px){
+  .hero__grid{grid-template-columns:1fr;gap:40px}
+  .stage{max-width:440px}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .process,.tms{grid-template-columns:1fr}
+  .foot__grid{grid-template-columns:1fr 1fr}
+  .nav__links{position:fixed;inset:0 0 0 auto;width:76%;max-width:320px;flex-direction:column;justify-content:center;gap:28px;background:rgba(6,11,8,.97);backdrop-filter:blur(14px);transform:translateX(100%);transition:transform .35s;z-index:150;padding:40px}
+  .nav__links.open{transform:translateX(0)}
+  .nav-toggle{display:flex}
+  .nav__right .btn{display:none}
+  .msticky{display:flex}
+  .fab{bottom:74px}
+  .fab__label{display:none}
+  .fab{padding:14px;border-radius:50%}
+}
+@media(max-width:560px){
+  .features{grid-template-columns:1fr}
+  .foot__grid{grid-template-columns:1fr}
+  .section{padding:74px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .hero h1 .ln span{transform:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<div class="vignette"></div>
+<div class="grain" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg></div>
+<div id="cur"></div><div id="curdot"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <img class="loader-mark" src="logo.png" alt="Brota Web">
+  <div class="loader-word">Plantando</div>
+  <div class="loader-track"><div class="loader-fill" id="loaderFill"></div></div>
+  <div class="loader-pct" id="loaderPct">0%</div>
+</div>
+
+<!-- ANNOUNCE -->
+<div class="announce">
+  <div class="announce__inner">
+    <span class="announce__dot"></span>
+    <span>Apenas <strong>3 vagas</strong> esta semana · Sua landing no ar em <strong>3 dias úteis</strong> · <a href="#preco" data-cursor>Garanta a sua →</a></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav__in">
+    <a href="#topo" class="brand" data-cursor><img src="logo.png" alt="Brota Web"><b>Brota Web</b></a>
+    <div class="nav__links" id="navLinks">
+      <a href="#beneficios" data-cursor>Benefícios</a>
+      <a href="#processo" data-cursor>Como funciona</a>
+      <a href="#preco" data-cursor>Preço</a>
+      <a href="#depoimentos" data-cursor>Clientes</a>
+      <a href="#faq" data-cursor>Perguntas</a>
+    </div>
+    <div class="nav__right">
+      <button class="sound-btn" id="soundBtn" data-cursor aria-label="Som"><span class="sound-bars"><i></i><i></i><i></i><i></i></span>Som</button>
+      <a href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Quero%20uma%20landing%20page%20por%20R%24%20689%2C90." class="btn btn--wa btn--xl" target="_blank" rel="noopener" data-cursor>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>WhatsApp</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="content">
+
+  <!-- HERO -->
+  <section class="hero" id="topo">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="hero__live"><span class="hero__live-dot"></span>Aceitando 3 projetos esta semana</span>
+          <h1 id="heroH1">
+            <span class="ln"><span>Uma landing page</span></span>
+            <span class="ln"><span>que faz seu negócio</span></span>
+            <span class="ln"><span><em class="accent" style="font-style:normal">brotar</em> em 3 dias úteis.</span></span>
+          </h1>
+          <p class="hero__sub">Design, copy e código no mesmo padrão de agência. A diferença é o prazo de <strong>3 dias úteis</strong> e o pagamento único, <strong>sem mensalidade</strong>. Somos o adubo do seu negócio.</p>
+
+          <ul class="pillars">
+            <li><span class="pi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.6L20 9.3l-4.4 3.9L17 19l-5-3-5 3 1.4-5.8L4 9.3l5.8-.7z"/></svg></span><div><strong>Design profissional</strong><span>Tipografia, hierarquia e identidade pensadas pra primeira impressão.</span></div></li>
+            <li><span class="pi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span><div><strong>Copy que vende</strong><span>Texto persuasivo com gatilhos, prova social e CTAs testados.</span></div></li>
+            <li><span class="pi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><div><strong>Performance 90+</strong><span>Carrega abaixo de 2s, SEO técnico e schema. Pronta pro Google.</span></div></li>
+          </ul>
+
+          <div class="hero__price">
+            <div class="hero__price-tag"><span class="multi">10x</span><span class="currency">R$</span><span class="amount">79</span><span class="multi">,50</span></div>
+            <div class="hero__price-meta"><span>ou <strong>R$ 689,90</strong> à vista no PIX</span><span><span class="strike">de R$ 1.490</span> · economize 54%</span></div>
+          </div>
+
+          <div class="hero__ctas">
+            <a href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Quero%20uma%20landing%20page%20por%20R%24%20689%2C90.%20Pode%20me%20mandar%20o%20briefing%3F" class="btn btn--accent btn--xxl" target="_blank" rel="noopener" data-cursor>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+              Quero a minha por R$ 689,90</a>
+            <a href="#processo" class="btn btn--ghost btn--xxl" data-cursor>Como funciona →</a>
+          </div>
+
+          <div class="hero__trust">
+            <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Garantia de 7 dias</strong> · não gostou, devolvemos 100%</span></div>
+            <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Pagamento seguro</strong> · PIX, boleto ou cartão · sem mensalidade</span></div>
+            <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>1 rodada de revisão grátis</strong> · ajustes finais sem custo</span></div>
+          </div>
+
+          <div class="hero__social">
+            <div class="avatars" aria-hidden="true"><span>RC</span><span>JM</span><span>LS</span><span>PA</span><span>+120</span></div>
+            <div>
+              <div class="rating-stars" aria-label="4,9 de 5">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              </div>
+              <div class="rating-text"><strong>4,9 / 5</strong> · +127 clientes atendidos</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="stage">
+            <article class="gcard">
+              <div class="tl__head"><div class="tl__title">Sua landing em 3 dias</div><span class="tl__live">ao vivo</span></div>
+              <div class="tl__steps">
+                <div class="tl__step tl__step--done"><div class="tl__dot"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="tl__day">Dia 1</div><div class="tl__label">Briefing + identidade</div></div></div>
+                <div class="tl__step tl__step--cur"><div class="tl__dot"></div><div><div class="tl__day">Dia 2</div><div class="tl__label">Design + copy + dev</div></div></div>
+                <div class="tl__step"><div class="tl__dot"></div><div><div class="tl__day">Dia 3</div><div class="tl__label">Revisão + entrega</div></div></div>
+              </div>
+            </article>
+            <article class="gcard badgecard">
+              <div class="bc-l"><div class="bt">Pagamento único</div><div class="bp">R$ 689<small>,90</small></div></div>
+              <div class="bc-r">10x de<br>R$ 79,50</div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS -->
+  <section class="logos">
+    <div class="wrap">
+      <p class="logos__title">+120 empresas brasileiras já confiaram na gente</p>
+    </div>
+    <div class="logos__vp">
+      <div class="logos__track">
+        <span>Intertrack</span><span>Opção Ferragens</span><span>Digital Insider</span><span>Renato Lima</span><span>Rio Claro Pneus</span><span>Seu Podcast BH</span><span>Venturi Rastreamento</span>
+        <span>Intertrack</span><span>Opção Ferragens</span><span>Digital Insider</span><span>Renato Lima</span><span>Rio Claro Pneus</span><span>Seu Podcast BH</span><span>Venturi Rastreamento</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIVO -->
+  <section class="section section--soft" id="beneficios">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Por que escolher a Brota</span><h2>Em 3 dias seu site brota. Na agência, você espera 30.</h2><p class="lead">Se você precisa do site no ar essa semana, agência ou freelancer costuma ser caro e devagar. Veja a diferença na prática.</p></div>
+      <div class="compare rv">
+        <table>
+          <thead><tr><th></th><th class="us"><span class="col-name">Brota Web<span class="col-tag">Você aqui</span></span></th><th><span class="col-name">Agência tradicional</span></th><th><span class="col-name">Freelancer avulso</span></th><th><span class="col-name">Designer no Insta</span></th></tr></thead>
+          <tbody>
+            <tr><td>Prazo de entrega</td><td class="us"><span class="hl">3 dias úteis</span></td><td>30 a 60 dias</td><td>15 a 30 dias</td><td>"Quando der"</td></tr>
+            <tr><td>Preço total</td><td class="us"><span class="hl">R$ 689,90</span></td><td>R$ 3.500 a R$ 8.000</td><td>R$ 1.500 a R$ 3.000</td><td>R$ 800 a R$ 2.000</td></tr>
+            <tr><td>Mensalidade obrigatória</td><td class="us">Não tem</td><td class="no">Sim · R$ 500+/mês</td><td>Às vezes</td><td>Não tem</td></tr>
+            <tr><td>Copy de venda escrito</td><td class="us">Incluso</td><td>Cobrado à parte</td><td class="no">Você escreve</td><td class="no">Você escreve</td></tr>
+            <tr><td>SEO técnico</td><td class="us">Incluso</td><td>Cobrado à parte</td><td class="no">Não faz</td><td class="no">Não faz</td></tr>
+            <tr><td>WhatsApp integrado</td><td class="us">Sim, em todas as telas</td><td>Configura por R$ extra</td><td>Depende do freela</td><td class="no">Geralmente não</td></tr>
+            <tr><td>Mobile-first real</td><td class="us">Sim, prioridade</td><td>Sim</td><td>Depende</td><td class="no">Quase nunca</td></tr>
+            <tr><td>Reuniões obrigatórias</td><td class="us">Zero · tudo no WhatsApp</td><td class="no">3 a 5 reuniões</td><td>1 a 2 reuniões</td><td>Some no meio</td></tr>
+            <tr><td>Garantia</td><td class="us">7 dias ou dinheiro de volta</td><td class="no">Não tem</td><td class="no">Não tem</td><td class="no">Não tem</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- COMPARATIVO · cards (mobile) -->
+      <div class="compare__mobile rv">
+        <article class="cmc cmc--us">
+          <div class="cmc__head"><div class="cmc__name">Brota Web</div><span class="cmc__tag cmc__tag--us">⚡ 3 dias</span></div>
+          <div class="cmc__rows">
+            <div class="cmc__row cmc__row--yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Entrega em <strong>3 dias úteis</strong></span></div>
+            <div class="cmc__row cmc__row--yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>R$ 689,90</strong> à vista, sem mensalidade</span></div>
+            <div class="cmc__row cmc__row--yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Copy + SEO + WhatsApp inclusos</span></div>
+            <div class="cmc__row cmc__row--yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Tudo pelo WhatsApp · zero reunião</span></div>
+            <div class="cmc__row cmc__row--yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Garantia de 7 dias</span></div>
+          </div>
+        </article>
+        <article class="cmc">
+          <div class="cmc__head"><div class="cmc__name">Agência tradicional</div><span class="cmc__tag cmc__tag--alt">30-60 dias</span></div>
+          <div class="cmc__rows">
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Prazo longo: <strong>30 a 60 dias</strong></span></div>
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>R$ 3.500 a R$ 8.000 + mensalidade</span></div>
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>3 a 5 reuniões obrigatórias</span></div>
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Copy e SEO cobrados à parte</span></div>
+          </div>
+        </article>
+        <article class="cmc">
+          <div class="cmc__head"><div class="cmc__name">Freelancer avulso</div><span class="cmc__tag cmc__tag--alt">15-30 dias</span></div>
+          <div class="cmc__rows">
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Prazo médio: <strong>15 a 30 dias</strong></span></div>
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>R$ 1.500 a R$ 3.000 e <strong>você</strong> escreve o texto</span></div>
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Sem garantia · risco de sumir no meio</span></div>
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>SEO geralmente não é feito</span></div>
+          </div>
+        </article>
+        <article class="cmc">
+          <div class="cmc__head"><div class="cmc__name">Designer no Insta</div><span class="cmc__tag cmc__tag--alt">"Quando der"</span></div>
+          <div class="cmc__rows">
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Prazo aberto, sem cronograma</span></div>
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Foca em design, não em vender</span></div>
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>WhatsApp e SEO raramente integrados</span></div>
+            <div class="cmc__row cmc__row--no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Mobile geralmente quebrado</span></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="compare-cta rv">
+        <p>Você não precisa esperar um mês nem assumir mensalidade fixa. Sua página pode estar <strong>no ar essa semana</strong>.</p>
+        <a href="https://wa.me/5537999061651?text=Quero%20a%20landing%20page%20em%203%20dias%20por%20R%24%20689%2C90" class="btn btn--wa btn--xl" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Quero começar hoje pelo WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE INCLUI -->
+  <section class="section" id="inclui">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">O que está incluso</span><h2>Tudo que sua landing precisa por R$ 689,90.</h2><p class="lead">Sem upsell escondido. Sem mensalidade. Você paga uma vez e o site é seu.</p></div>
+      <div class="features">
+        <div class="feature rv"><div class="feature__ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>Mobile-first de verdade</h3><p>Pensada primeiro no celular. Testada em iPhone, Android, tablet e desktop. Carrega rápido no 4G.</p></div>
+        <div class="feature rv"><div class="feature__ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg></div><h3>WhatsApp em todo lugar</h3><p>Botão flutuante + CTAs com mensagem pré-pronta. O cliente clica e cai direto no seu chat.</p></div>
+        <div class="feature rv"><div class="feature__ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>SEO técnico incluso</h3><p>Meta tags, schema, sitemap, robots, Open Graph e performance. Entra no Google sem custo extra.</p></div>
+        <div class="feature rv"><div class="feature__ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Foco em conversão</h3><p>Hero direto, prova social, gatilhos, FAQ e garantia. Estrutura testada pra vender, não só enfeitar.</p></div>
+        <div class="feature rv"><div class="feature__ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>Carregamento rápido</h3><p>90+ no PageSpeed. Cada segundo a mais custa 7% de conversão. A nossa não custa.</p></div>
+        <div class="feature rv"><div class="feature__ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>Você é o dono</h3><p>Recebe o código-fonte completo. Hospeda onde quiser, edita quando quiser, leva pra onde quiser.</p></div>
+        <div class="feature rv"><div class="feature__ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Pronta em 3 dias úteis</h3><p>Cronograma claro: dia 1 briefing, dia 2 design e código, dia 3 revisão e entrega. Sem enrolação.</p></div>
+        <div class="feature rv"><div class="feature__ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><h3>Copy de venda incluso</h3><p>Não precisa contratar redator. Escrevemos hero, benefícios, FAQ e CTAs pro seu público.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="section section--soft" id="processo">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Como funciona</span><h2>Do primeiro "oi" no WhatsApp ao site no ar em 3 dias.</h2><p class="lead">Processo enxuto, sem reuniões intermináveis. Você acompanha tudo pelo WhatsApp.</p></div>
+      <div class="process">
+        <div class="step rv"><div class="step__num">1</div><div class="step__day">Dia 1 · briefing</div><h3>Conta a tua história</h3><p>Você responde um briefing rápido (15 min) pelo WhatsApp. A gente alinha cores, tom, oferta e o que precisa estar na página.</p></div>
+        <div class="step rv"><div class="step__num">2</div><div class="step__day">Dia 2 · produção</div><h3>A gente planta tudo</h3><p>Design, copy de venda e código rodando ao mesmo tempo. Você recebe um preview ainda no fim do dia.</p></div>
+        <div class="step rv"><div class="step__num">3</div><div class="step__day">Dia 3 · entrega</div><h3>Revisão final e no ar</h3><p>1 rodada de ajustes grátis. Publicamos no seu domínio e entregamos os arquivos completos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREÇO -->
+  <section class="section" id="preco">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Preço transparente</span><h2>Uma única cobrança. Site seu pra sempre.</h2><p class="lead">Pagamento único, sem mensalidade e sem taxa de setup. O que está aqui é o que você vai pagar.</p></div>
+      <div class="pricing rv">
+        <span class="pricing__badge">⚡ Mais escolhido</span>
+        <h3 class="pricing__title">Landing Page Profissional</h3>
+        <p class="pricing__sub">Tudo que você precisa pra vender pela internet, pronto em 3 dias.</p>
+        <div class="pricing__price"><span class="currency">R$</span><span class="amount">689</span><span class="cents">,90</span></div>
+        <div class="pricing__alt"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>ou em <strong>10x de R$ 79,50</strong> no cartão</div>
+        <ul class="pricing__list">
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Página única, mobile-first, otimizada para conversão</li>
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Botão de WhatsApp flutuante + CTAs integrados (37 99906-1651)</li>
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Copy de venda profissional (hero, benefícios, FAQ, CTAs)</li>
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEO técnico básico (meta tags, schema, Open Graph, sitemap)</li>
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Performance otimizada (90+ no Google PageSpeed)</li>
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Formulário de contato + integração com seu e-mail</li>
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pixel do Facebook + Google Tag Manager configurados</li>
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Entrega dos arquivos + publicação no seu domínio</li>
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>1 rodada de revisão grátis</strong> após a entrega</li>
+          <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Garantia de 7 dias</strong> ou seu dinheiro de volta</li>
+        </ul>
+        <div class="pricing__cta">
+          <a href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Quero%20fechar%20a%20landing%20page%20por%20R%24%20689%2C90.%20Como%20faz%20pra%20come%C3%A7ar%3F" class="btn btn--wa btn--xxl btn--block" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Quero a minha landing page agora</a>
+          <a href="https://wa.me/5537999061651?text=Tenho%20uma%20d%C3%BAvida%20sobre%20a%20landing%20page%20de%20R%24%20689%2C90." class="btn btn--ghost btn--xl btn--block" target="_blank" rel="noopener" data-cursor>Tenho uma dúvida antes</a>
+        </div>
+        <p class="pricing__safe"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.4 0 4.59.94 6.21 2.47"/></svg>Pagamento 100% seguro · PIX, boleto ou cartão · NF-e emitida</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="section section--soft" id="depoimentos">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">O que os clientes dizem</span><h2>Quem plantou com a gente, recomenda.</h2><p class="lead">+127 clientes atendidos · nota média 4,9 · taxa de recomendação de 96%.</p></div>
+      <div class="tms">
+        <article class="tm rv">
+          <div class="tm__stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+          <p class="tm__text">"Em 3 dias estava no ar. No primeiro fim de semana já fechei 2 clientes que vieram do botão de WhatsApp da landing. Pagou em uma semana."</p>
+          <div class="tm__author"><div class="tm__av" style="background:linear-gradient(135deg,#84CC16,#65A30D)">RC</div><div><div class="tm__name">Rafael Carvalho</div><div class="tm__role">Personal Trainer · BH</div></div></div>
+        </article>
+        <article class="tm rv">
+          <div class="tm__stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+          <p class="tm__text">"Cotei com 3 agências e todas pediam mais de R$ 2.500 + mensalidade. Aqui paguei uma vez e o site é meu. Sério, sem pegadinha."</p>
+          <div class="tm__author"><div class="tm__av" style="background:linear-gradient(135deg,#F59E0B,#D97706)">JM</div><div><div class="tm__name">Juliana Mendes</div><div class="tm__role">Studio de Estética · Contagem</div></div></div>
+        </article>
+        <article class="tm rv">
+          <div class="tm__stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+          <p class="tm__text">"O texto da página ficou tão bom que parecia que conheciam minha empresa há anos. Já estava no Google na 1ª página em 2 semanas. Recomendo demais."</p>
+          <div class="tm__author"><div class="tm__av" style="background:linear-gradient(135deg,#3B82F6,#1D4ED8)">LS</div><div><div class="tm__name">Lucas Silveira</div><div class="tm__role">Imobiliária · Belo Horizonte</div></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Perguntas frequentes</span><h2>Tudo que você precisa saber antes de fechar.</h2><p class="lead">Não achou sua dúvida? <a href="https://wa.me/5537999061651?text=Tenho%20uma%20pergunta%20sobre%20a%20landing%20page" target="_blank" rel="noopener" style="color:var(--lime);font-weight:700">Manda no WhatsApp</a>.</p></div>
+      <div class="faq">
+        <details class="faq__item"><summary class="faq__q" data-cursor>Quanto custa exatamente? Tem mensalidade?</summary><div class="faq__a">A landing page custa <strong>R$ 689,90 à vista no PIX</strong> ou em até <strong>10x de R$ 79,50 no cartão</strong>. <strong>Não tem mensalidade obrigatória.</strong> Você paga uma vez e o site é seu pra sempre. Hospedagem você pode contratar onde quiser (a partir de R$ 15/mês, opcional).</div></details>
+        <details class="faq__item"><summary class="faq__q" data-cursor>Em quanto tempo fica pronta?</summary><div class="faq__a"><strong>3 dias úteis</strong> a partir da aprovação do briefing e do pagamento. Dia 1: briefing e identidade. Dia 2: design, copy e desenvolvimento. Dia 3: revisão e entrega. Você acompanha cada etapa pelo WhatsApp.</div></details>
+        <details class="faq__item"><summary class="faq__q" data-cursor>Como é o processo? Preciso fazer reuniões?</summary><div class="faq__a">Tudo pelo WhatsApp, sem reuniões obrigatórias. Você responde um briefing rápido de 15 minutos sobre seu negócio, público e oferta. Se quiser uma chamada de 20 minutos, marcamos sem custo.</div></details>
+        <details class="faq__item"><summary class="faq__q" data-cursor>A landing é mobile? Funciona no celular?</summary><div class="faq__a">Sim, e é nossa prioridade #1. Toda página é <strong>mobile-first</strong> (primeiro no celular, depois desktop), porque 90% dos brasileiros acessam pelo celular. Testamos em iPhone, Android, tablet e desktop antes de entregar.</div></details>
+        <details class="faq__item"><summary class="faq__q" data-cursor>Tem botão de WhatsApp integrado?</summary><div class="faq__a">Sim. Botão flutuante em todas as telas + CTAs com mensagem pré-pronta. O cliente clica e cai direto no seu chat com o assunto certo. Configuramos com o seu número (37 99906-1651 é o nosso, durante o desenvolvimento).</div></details>
+        <details class="faq__item"><summary class="faq__q" data-cursor>Vou aparecer no Google?</summary><div class="faq__a">Sim. Entregamos com <strong>SEO técnico básico</strong> incluso: meta tags, schema, sitemap, robots.txt, Open Graph, performance 90+ no PageSpeed. Sua página é indexada sem custo extra. Para campanhas pagas (Google/Meta Ads), há pacote separado.</div></details>
+        <details class="faq__item"><summary class="faq__q" data-cursor>Posso editar o site depois?</summary><div class="faq__a">Pode. Entregamos os arquivos completos e você fica dono do código. Se preferir não mexer, fazemos pequenas alterações a partir de <strong>R$ 49,90</strong>. Manutenção mensal é opcional, nunca obrigatória.</div></details>
+        <details class="faq__item"><summary class="faq__q" data-cursor>E se eu não gostar do resultado?</summary><div class="faq__a">Você tem <strong>garantia de 7 dias</strong>. Não gostou, devolvemos 100% sem perguntas. Antes da entrega final, ainda tem <strong>1 rodada de revisão grátis</strong>.</div></details>
+        <details class="faq__item"><summary class="faq__q" data-cursor>Vocês emitem nota fiscal?</summary><div class="faq__a">Sim, NF-e emitida no mesmo dia do pagamento. Pode usar para abater no Imposto de Renda (PJ ou PF), conforme seu contador.</div></details>
+        <details class="faq__item"><summary class="faq__q" data-cursor>Preciso ter domínio próprio?</summary><div class="faq__a">Não. Sem domínio (.com.br), publicamos num subdomínio temporário gratuito. Quando comprar o seu (a partir de R$ 40/ano no Registro.br), migramos sem custo.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="ctaf">
+    <div class="wrap">
+      <span class="eyebrow" style="justify-content:center">Última chamada</span>
+      <h2 class="rv">Sua próxima venda pode estar a <span class="accent">3 dias</span> de distância.</h2>
+      <p class="rv">Por R$ 689,90 à vista no PIX ou em 10x de R$ 79,50 no cartão, sua landing page profissional fica pronta ainda essa semana.</p>
+      <div class="ctaf__btns rv">
+        <a href="https://wa.me/5537999061651?text=Quero%20fechar%20a%20landing%20page%20por%20R%24%20689%2C90%20agora!" class="btn btn--accent btn--xxl" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Garantir minha vaga</a>
+        <a href="tel:+5537999061651" class="btn btn--ghost btn--xxl" data-cursor><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Ligar (37) 99906-1651</a>
+      </div>
+      <p class="ctaf__hint">3 vagas restantes esta semana · entrega até sexta</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot__grid">
+        <div class="foot__brand">
+          <img src="logo.png" alt="Brota Web">
+          <div class="sl">Somos o adubo do seu negócio.</div>
+          <p class="foot__about">Landing pages profissionais para pequenas e médias empresas. Pagamento único, entrega em 3 dias úteis, sem mensalidade.</p>
+        </div>
+        <div><h4 class="foot__title">Navegação</h4><ul class="foot__list"><li><a href="#beneficios" data-cursor>Benefícios</a></li><li><a href="#processo" data-cursor>Como funciona</a></li><li><a href="#preco" data-cursor>Preço</a></li><li><a href="#depoimentos" data-cursor>Clientes</a></li><li><a href="#faq" data-cursor>Perguntas</a></li></ul></div>
+        <div><h4 class="foot__title">Serviços</h4><ul class="foot__list"><li><a href="#preco" data-cursor>Landing Page Profissional</a></li><li><a href="https://wa.me/5537999061651?text=Quero%20uma%20landing%20com%20mais%20p%C3%A1ginas" target="_blank" rel="noopener" data-cursor>Site multi-páginas</a></li><li><a href="https://wa.me/5537999061651?text=Quero%20configurar%20Google%20Ads" target="_blank" rel="noopener" data-cursor>Google Ads / Meta Ads</a></li><li><a href="https://wa.me/5537999061651?text=Quero%20fazer%20SEO%20avan%C3%A7ado" target="_blank" rel="noopener" data-cursor>SEO avançado</a></li></ul></div>
+        <div><h4 class="foot__title">Contato</h4><div class="foot__contact">
+          <a href="https://wa.me/5537999061651" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>(37) 99906-1651</a>
+          <a href="https://instagram.com/brotaweb" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.17.4.36 1 .42 2.2.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .36-2.2.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 3.6A6.2 6.2 0 1 0 18.2 12 6.2 6.2 0 0 0 12 5.8zm0 10.2A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-10.4a1.44 1.44 0 1 0 1.44 1.44A1.44 1.44 0 0 0 18.4 5.6z"/></svg>@brotaweb</a>
+          <a href="https://brotaweb.com.br" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>brotaweb.com.br</a>
+        </div></div>
+      </div>
+      <div class="foot__bottom"><span>© 2026 Brota Web · Divinópolis, MG. Todos os direitos reservados.</span><span>Somos o adubo do seu negócio 🌱</span></div>
+    </div>
+  </footer>
+</div>
+
+<!-- WHATSAPP FAB -->
+<a class="fab" href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20a%20landing%20page%20por%20R%24%20689%2C90." target="_blank" rel="noopener" data-cursor aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.597 20.13c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.477-.913z"/></svg>
+  <span class="fab__label">Fale com a gente</span>
+</a>
+
+<!-- MOBILE STICKY -->
+<div class="msticky">
+  <div class="msticky__price"><span class="from">A partir de</span><span class="val">R$ 689,90</span><span class="alt">10x de R$ 79,50</span></div>
+  <a href="https://wa.me/5537999061651?text=Quero%20a%20landing%20page%20por%20R%24%20689%2C90!" class="btn btn--wa btn--xl" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Quero agora</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch=matchMedia('(hover:none)').matches;
+  var isMobile=matchMedia('(max-width:760px)').matches;
+  var hasGSAP=typeof gsap!=='undefined';
+  var hasST=hasGSAP&&typeof ScrollTrigger!=='undefined';
+  if(hasST)gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- WEBGL: árvore generativa + pólen ---- */
+  var treeCtl={progress:0};var renderer,scene,camera,treeLines,points,group,OK=false,clock;
+  function initGL(){
+    if(typeof THREE==='undefined')return;
+    try{
+      var canvas=document.getElementById('bg');
+      renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:!isMobile,alpha:true,powerPreference:'high-performance'});
+      renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
+      renderer.setSize(innerWidth,innerHeight);
+      scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x060B08,0.02);
+      camera=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,0.1,200);camera.position.set(0,6,30);
+      group=new THREE.Group();scene.add(group);
+      var seed=20260603;function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
+      var segs=[];var rootN=isMobile?5:8;
+      for(var r=0;r<rootN;r++){var a=(r/rootN)*Math.PI*2,l=2.2+rnd()*1.6;segs.push({a:[0,0,0],b:[Math.cos(a)*l*0.5,-l,Math.sin(a)*l*0.5],t:0});}
+      var maxD=isMobile?6:8;
+      function grow(x,y,z,dx,dy,dz,len,d){if(d>maxD||len<0.5)return;var nx=x+dx*len,ny=y+dy*len,nz=z+dz*len,t=1-(d/maxD);segs.push({a:[x,y,z],b:[nx,ny,nz],t:1-t});var br=d<2?1:(rnd()<0.82?2:3);for(var i=0;i<br;i++){var sp=0.5+d*0.12,ax=dx+(rnd()-0.5)*sp,ay=dy+(rnd()*0.25)+0.1,az=dz+(rnd()-0.5)*sp,m=Math.hypot(ax,ay,az)||1;grow(nx,ny,nz,ax/m,ay/m,az/m,len*(0.72+rnd()*0.12),d+1);}}
+      grow(0,0,0,0,1,0,isMobile?4.2:5,0);
+      segs.sort(function(p,q){return (p.a[1]+p.b[1])-(q.a[1]+q.b[1]);});
+      var pos=new Float32Array(segs.length*6),col=new Float32Array(segs.length*6),cB=new THREE.Color(0x15803D),cT=new THREE.Color(0xA3E635);
+      segs.forEach(function(s,i){pos[i*6]=s.a[0];pos[i*6+1]=s.a[1];pos[i*6+2]=s.a[2];pos[i*6+3]=s.b[0];pos[i*6+4]=s.b[1];pos[i*6+5]=s.b[2];var c=cB.clone().lerp(cT,s.t);col[i*6]=c.r;col[i*6+1]=c.g;col[i*6+2]=c.b;col[i*6+3]=c.r;col[i*6+4]=c.g;col[i*6+5]=c.b;});
+      var g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('color',new THREE.BufferAttribute(col,3));g.setDrawRange(0,0);
+      treeLines=new THREE.LineSegments(g,new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.9}));treeLines.userData.total=segs.length*2;group.add(treeLines);
+      var spr=document.createElement('canvas');spr.width=spr.height=64;var sx=spr.getContext('2d'),gr=sx.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,'rgba(180,255,120,1)');gr.addColorStop(.3,'rgba(120,220,80,.6)');gr.addColorStop(1,'rgba(120,220,80,0)');sx.fillStyle=gr;sx.fillRect(0,0,64,64);
+      var tex=new THREE.CanvasTexture(spr),pN=isMobile?500:1600,pp=new Float32Array(pN*3),spd=new Float32Array(pN);
+      for(var i=0;i<pN;i++){pp[i*3]=(rnd()-0.5)*44;pp[i*3+1]=(rnd()-0.5)*44;pp[i*3+2]=(rnd()-0.5)*30;spd[i]=0.005+rnd()*0.02;}
+      var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
+      points=new THREE.Points(pg,new THREE.PointsMaterial({size:isMobile?0.5:0.42,map:tex,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.9,color:0xA3E635}));points.userData.spd=spd;scene.add(points);
+      clock=new THREE.Clock();OK=true;
+    }catch(e){console.warn(e);}
+  }
+  var mouse={x:0,y:0},tgt={x:0,y:0};
+  addEventListener('mousemove',function(e){mouse.x=e.clientX/innerWidth-0.5;mouse.y=e.clientY/innerHeight-0.5;});
+  function animate(){requestAnimationFrame(animate);if(!OK)return;var dt=clock.getDelta(),t=clock.getElapsedTime();tgt.x+=(mouse.x-tgt.x)*0.05;tgt.y+=(mouse.y-tgt.y)*0.05;
+    treeLines.geometry.setDrawRange(0,Math.floor(treeLines.userData.total*Math.min(1,treeCtl.progress*1.15)));
+    group.rotation.y=Math.sin(t*0.08)*0.25+tgt.x*0.5;group.rotation.x=-0.04+tgt.y*0.18;
+    camera.position.y+=((4+treeCtl.progress*12)-camera.position.y)*0.05;camera.position.x+=((tgt.x*6)-camera.position.x)*0.05;camera.lookAt(0,3+treeCtl.progress*9,0);
+    var arr=points.geometry.attributes.position.array,spd=points.userData.spd;for(var i=0;i<spd.length;i++){arr[i*3+1]+=spd[i]*48*dt;if(arr[i*3+1]>24)arr[i*3+1]=-24;}points.geometry.attributes.position.needsUpdate=true;points.rotation.y=t*0.02;
+    renderer.render(scene,camera);}
+  addEventListener('resize',function(){if(!OK)return;camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+
+  /* ---- scroll + reveals ---- */
+  function startScroll(){
+    if(reduce||typeof Lenis==='undefined'||!hasST){
+      document.querySelectorAll('.rv').forEach(function(e){e.style.opacity=1;e.style.transform='none';});
+      if(hasST)ScrollTrigger.create({trigger:'.content',start:'top top',end:'bottom bottom',scrub:true,onUpdate:function(s){treeCtl.progress=s.progress;}});
+      return;
+    }
+    var lenis=new Lenis({lerp:0.1,smoothWheel:true});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(function(t){lenis.raf(t*1000);});gsap.ticker.lagSmoothing(0);
+    ScrollTrigger.create({trigger:'.content',start:'top top',end:'bottom bottom',scrub:true,onUpdate:function(s){treeCtl.progress=s.progress;}});
+    gsap.utils.toArray('.rv').forEach(function(el){gsap.fromTo(el,{opacity:0,y:32},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 84%'}});});
+  }
+  function heroIntro(){
+    if(reduce||!hasGSAP){document.querySelectorAll('#heroH1 .ln span').forEach(function(s){s.style.transform='none';});return;}
+    gsap.to('#heroH1 .ln span',{y:'0%',duration:1.1,ease:'expo.out',stagger:0.12,delay:0.1});
+  }
+
+  /* ---- loader ---- */
+  var fill=document.getElementById('loaderFill'),pct=document.getElementById('loaderPct'),loader=document.getElementById('loader'),p=0;
+  var li=setInterval(function(){p+=Math.random()*16;if(p>=100){p=100;clearInterval(li);fill.style.width='100%';pct.textContent='100%';setTimeout(function(){loader.classList.add('done');heroIntro();startScroll();},400);}else{fill.style.width=p+'%';pct.textContent=Math.floor(p)+'%';}},110);
+  initGL();if(OK){animate();}else{var fb=document.createElement('div');fb.className='bg-fallback';document.body.insertBefore(fb,document.getElementById('bg'));}
+
+  /* ---- nav scrolled + menu ---- */
+  var nav=document.getElementById('nav');addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>10);},{passive:true});
+  var tg=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
+  tg.addEventListener('click',function(){nl.classList.toggle('open');});
+  nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open');});});
+
+  /* ---- cursor ---- */
+  if(!isTouch){var cur=document.getElementById('cur'),dot=document.getElementById('curdot'),cx=0,cy=0,dx=0,dy=0;
+    addEventListener('mousemove',function(e){dx=e.clientX;dy=e.clientY;dot.style.transform='translate('+dx+'px,'+dy+'px) translate(-50%,-50%)';});
+    (function lp(){cx+=(dx-cx)*0.18;cy+=(dy-cy)*0.18;cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';requestAnimationFrame(lp);})();
+    document.querySelectorAll('[data-cursor],a,button,summary').forEach(function(el){el.addEventListener('mouseenter',function(){cur.classList.add('grow');});el.addEventListener('mouseleave',function(){cur.classList.remove('grow');});});}
+
+  /* ---- som ambiente ---- */
+  var sb=document.getElementById('soundBtn'),ac=null,osc=null,gn=null,on=false;
+  sb.addEventListener('click',function(){on=!on;sb.classList.toggle('on',on);if(on){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();osc=ac.createOscillator();gn=ac.createGain();osc.type='sine';osc.frequency.value=72;gn.gain.value=0;osc.connect(gn);gn.connect(ac.destination);osc.start();gn.gain.linearRampToValueAtTime(0.04,ac.currentTime+1.2);}catch(e){}}else if(gn&&ac){gn.gain.linearRampToValueAtTime(0,ac.currentTime+0.4);setTimeout(function(){try{osc.stop();}catch(e){}},500);}});
+
+  /* ---- smooth anchors (fallback) ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var id=a.getAttribute('href');if(id.length<2)return;var el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:reduce?'auto':'smooth'});}});});
+})();
+</script>
+</body>
+</html>
