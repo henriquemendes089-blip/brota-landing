@@ -174,6 +174,18 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 .badgecard .bc-l .bp small{font-size:.5em}
 .badgecard .bc-r{font-family:'Plus Jakarta Sans';font-weight:700;font-size:13px;color:var(--neon);text-align:right}
 
+/* hero — card 3D que endireita no scroll (efeito tipo Aceternity, em vanilla) */
+.tilt3d-wrap{perspective:1400px}
+.tilt3d{border:4px solid #2b322c;border-radius:24px;background:#171c18;padding:8px;box-shadow:0 9px 20px #0000004a,0 37px 37px #00000042,0 84px 50px #00000026,0 149px 60px #0000000a;transform:perspective(1400px) rotateX(16deg) scale(.96);transform-origin:50% 0%;will-change:transform}
+.tilt3d-bar{display:flex;align-items:center;gap:6px;padding:7px 12px 9px}
+.tilt3d-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
+.tilt3d-bar .u{margin-left:8px;flex:1;height:18px;border-radius:9px;background:rgba(255,255,255,.06);font-family:'Space Grotesk';font-size:10px;color:var(--muted);display:flex;align-items:center;padding:0 12px}
+.tilt3d-screen{border-radius:14px;overflow:hidden;background:#0c1610;aspect-ratio:16/10}
+.tilt3d-screen iframe{width:100%;height:100%;border:0;display:block}
+.tilt3d-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(22,163,74,.22),rgba(10,19,13,.92))}
+.tilt3d-ph span{font-family:'Plus Jakarta Sans';font-weight:800;font-size:18px;color:var(--lime);opacity:.6}
+@media(prefers-reduced-motion:reduce){.tilt3d{transform:none!important}}
+
 /* logos marquee */
 .logos{padding:46px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:10;background:rgba(6,11,8,.4)}
 .logos__title{text-align:center;font-family:'Space Grotesk';font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
@@ -435,20 +447,15 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
           </div>
         </div>
 
-        <div class="hero__visual" aria-hidden="true">
-          <div class="stage">
-            <article class="gcard">
-              <div class="tl__head"><div class="tl__title">Sua landing em 3 dias</div><span class="tl__live">ao vivo</span></div>
-              <div class="tl__steps">
-                <div class="tl__step tl__step--done"><div class="tl__dot"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="tl__day">Dia 1</div><div class="tl__label">Briefing + identidade</div></div></div>
-                <div class="tl__step tl__step--cur"><div class="tl__dot"></div><div><div class="tl__day">Dia 2</div><div class="tl__label">Design + copy + dev</div></div></div>
-                <div class="tl__step"><div class="tl__dot"></div><div><div class="tl__day">Dia 3</div><div class="tl__label">Revisão + entrega</div></div></div>
+        <div class="hero__visual">
+          <div class="tilt3d-wrap">
+            <div class="tilt3d" id="tilt3d">
+              <div class="tilt3d-bar"><i></i><i></i><i></i><span class="u">seu-projeto.com.br</span></div>
+              <!-- TROCAR pelo projeto: <iframe src="LINK"></iframe> (se permitir embed) OU um print. Por enquanto, placeholder: -->
+              <div class="tilt3d-screen" id="tilt3dScreen">
+                <div class="tilt3d-ph"><span>Preview do seu projeto</span></div>
               </div>
-            </article>
-            <article class="gcard badgecard">
-              <div class="bc-l"><div class="bt">Pagamento único</div><div class="bp">R$ 689<small>,90</small></div></div>
-              <div class="bc-r">10x de<br>R$ 79,50</div>
-            </article>
+            </div>
           </div>
         </div>
       </div>
@@ -753,6 +760,13 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
 
   /* ---- nav scrolled + menu ---- */
   var nav=document.getElementById('nav');addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>10);},{passive:true});
+
+  /* ---- card 3D do hero: endireita conforme rola ---- */
+  var t3=document.getElementById('tilt3d');
+  if(t3&&!reduce){
+    var upd3=function(){var p=Math.min(1,Math.max(0,scrollY/560));var rx=16*(1-p),sc=0.96+0.04*p;t3.style.transform='perspective(1400px) rotateX('+rx+'deg) scale('+sc+')';};
+    addEventListener('scroll',upd3,{passive:true});upd3();
+  }
   var tg=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
   tg.addEventListener('click',function(){nl.classList.toggle('open');});
   nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open');});});
