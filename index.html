@@ -61,15 +61,7 @@ h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.05;font-weight
 #cur.grow{width:70px;height:70px;background:rgba(163,230,53,.12);border-color:transparent}
 @media(hover:none){#cur,#curdot{display:none}}
 
-/* loader */
-#loader{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .8s,visibility .8s}
-#loader.done{opacity:0;visibility:hidden}
-.loader-mark{width:60px;animation:breathe 2.6s ease-in-out infinite}
-.loader-word{font-family:'Plus Jakarta Sans';font-weight:800;font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--lime);text-indent:.5em}
-.loader-track{width:190px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
-.loader-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--neon))}
-.loader-pct{font-family:'Space Grotesk';font-size:12px;color:var(--muted)}
-@keyframes breathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.08);opacity:1}}
+/* loader removido */
 
 /* botões */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Plus Jakarta Sans';font-weight:800;border-radius:12px;cursor:none;border:1px solid transparent;transition:transform .25s,box-shadow .25s,background .25s,border-color .25s,color .25s;line-height:1}
@@ -360,14 +352,6 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
 <div class="vignette"></div>
 <div class="grain" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg></div>
 <div id="cur"></div><div id="curdot"></div>
-
-<!-- LOADER -->
-<div id="loader">
-  <img class="loader-mark" src="logo.png" alt="Brota Web">
-  <div class="loader-word">Plantando</div>
-  <div class="loader-track"><div class="loader-fill" id="loaderFill"></div></div>
-  <div class="loader-pct" id="loaderPct">0%</div>
-</div>
 
 <!-- ANNOUNCE -->
 <div class="announce">
@@ -729,105 +713,8 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
       scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x060B08,0.02);
       camera=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,0.1,200);camera.position.set(0,6,30);
       group=new THREE.Group();scene.add(group);
-      // ---------- LUZES ----------
-      scene.add(new THREE.AmbientLight(0x4a6b55,0.85));
-      var keyL=new THREE.DirectionalLight(0xf2fff0,1.15);keyL.position.set(-9,15,10);scene.add(keyL);
-      var rimL=new THREE.DirectionalLight(0x4ADE80,0.5);rimL.position.set(9,5,-7);scene.add(rimL);
-      var glowL=new THREE.PointLight(0xA3E635,1.2,90);glowL.position.set(0,10,9);scene.add(glowL);
-
-      // ---------- GERAR ÁRVORE DETALHADA ----------
       var seed=20260603;function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
-      function rr(a,b){return a+(b-a)*rnd();}
-      var V=THREE.Vector3;
-      var maxD=isMobile?5:6, RS=isMobile?5:6, STEPS=4, maxBranches=isMobile?120:240;
-      var branchList=[], leafAnchors=[], bcount=0;
-      var trunkC=new THREE.Color(0x223524), midC=new THREE.Color(0x16A34A), tipC=new THREE.Color(0x7ff0a8);
-
-      function addBranch(p0,dir,len,rad,depth){
-        if(bcount++>maxBranches)return;
-        var pts=[p0.clone()], cur=p0.clone(), d=dir.clone().normalize();
-        for(var i=0;i<STEPS;i++){
-          d.x+=rr(-0.14,0.14)*(0.4+depth*0.12);
-          d.y+=-0.05*depth;                       // gravidade: galhos altos arqueiam
-          d.z+=rr(-0.14,0.14)*(0.4+depth*0.12);
-          d.normalize();
-          cur.addScaledVector(d,len/STEPS);
-          pts.push(cur.clone());
-        }
-        var dc=depth/maxD;
-        branchList.push({pts:pts,r1:rad,r2:rad*0.6,c0:trunkC.clone().lerp(midC,Math.min(1,dc*1.3)),c1:midC.clone().lerp(tipC,dc),by:p0.y});
-        if(depth>=maxD||len<0.7){leafAnchors.push({p:cur.clone(),big:true});return;}
-        if(depth>=maxD-2)leafAnchors.push({p:pts[pts.length-1].clone(),big:false});
-        var nb=depth<1?1:(rnd()<0.6?2:3), tip=pts[pts.length-1];
-        for(var b=0;b<nb;b++){
-          var nd=d.clone();nd.x+=rr(-0.75,0.75);nd.y+=rr(0.1,0.5);nd.z+=rr(-0.75,0.75);nd.normalize();
-          addBranch(tip,nd,len*rr(0.64,0.76),rad*0.64,depth+1);
-        }
-      }
-      // raízes
-      var rootN=isMobile?4:6;
-      for(var r=0;r<rootN;r++){var ra2=(r/rootN)*Math.PI*2;branchList.push({pts:[new V(0,0,0),new V(Math.cos(ra2)*rr(1,1.8),-rr(2,3.4),Math.sin(ra2)*rr(1,1.8))],r1:0.5,r2:0.12,c0:new THREE.Color(0x152217),c1:trunkC.clone(),by:-3});}
-      // tronco + copa
-      addBranch(new V(0,0,0),new V(0,1,0),isMobile?4.2:5,isMobile?0.6:0.72,0);
-      branchList.sort(function(p,q){return p.by-q.by;});
-
-      // ---------- MALHA DOS GALHOS ----------
-      var P=[],C=[],ua=new V(),va=new V(),ax=new V(),tmp=new V();
-      function pushTri(a,b,c,ca,cb,cc){P.push(a.x,a.y,a.z,b.x,b.y,b.z,c.x,c.y,c.z);C.push(ca.r,ca.g,ca.b,cb.r,cb.g,cb.b,cc.r,cc.g,cc.b);}
-      function cyl(pa,pb,rA,rB,cA,cB){
-        ax.copy(pb).sub(pa);var L=ax.length();if(L<1e-5)return;ax.multiplyScalar(1/L);
-        var up=Math.abs(ax.y)>0.9?tmp.set(1,0,0):tmp.set(0,1,0);
-        ua.crossVectors(ax,up).normalize();va.crossVectors(ax,ua).normalize();
-        for(var i=0;i<RS;i++){
-          var a0=i/RS*6.2832,a1=(i+1)/RS*6.2832,c0=Math.cos(a0),s0=Math.sin(a0),c1=Math.cos(a1),s1=Math.sin(a1);
-          var A=new V().copy(pa).addScaledVector(ua,c0*rA).addScaledVector(va,s0*rA);
-          var B=new V().copy(pa).addScaledVector(ua,c1*rA).addScaledVector(va,s1*rA);
-          var Cc=new V().copy(pb).addScaledVector(ua,c1*rB).addScaledVector(va,s1*rB);
-          var D=new V().copy(pb).addScaledVector(ua,c0*rB).addScaledVector(va,s0*rB);
-          pushTri(A,B,Cc,cA,cA,cB);pushTri(A,Cc,D,cA,cB,cB);
-        }
-      }
-      branchList.forEach(function(br){
-        var n=br.pts.length-1;
-        for(var i=0;i<n;i++){
-          var t0=i/n,t1=(i+1)/n;
-          cyl(br.pts[i],br.pts[i+1],br.r1+(br.r2-br.r1)*t0,br.r1+(br.r2-br.r1)*t1,br.c0.clone().lerp(br.c1,t0),br.c0.clone().lerp(br.c1,t1));
-        }
-      });
-      var bg=new THREE.BufferGeometry();
-      bg.setAttribute('position',new THREE.Float32BufferAttribute(P,3));
-      bg.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
-      bg.computeVertexNormals();bg.setDrawRange(0,0);
-      treeLines=new THREE.Mesh(bg,new THREE.MeshLambertMaterial({vertexColors:true,side:THREE.DoubleSide}));
-      treeLines.userData.total=P.length/3;group.add(treeLines);
-
-      // ---------- FOLHAS ----------
-      leafAnchors.sort(function(p,q){return p.p.y-q.p.y;});
-      var LP=[],LC=[],leafCols=[0x16A34A,0x22c55e,0x4ADE80,0x86efac,0xA3E635],na=new V(),lu=new V(),lv=new V(),leafBudget=isMobile?260:700,made=0;
-      function leafQuad(center,size,colr){
-        na.set(rr(-1,1),rr(-1,1),rr(-1,1));if(na.lengthSq()<1e-3)na.set(0,1,0);na.normalize();
-        var up=Math.abs(na.y)>0.9?tmp.set(1,0,0):tmp.set(0,1,0);
-        lu.crossVectors(na,up).normalize();lv.crossVectors(na,lu).normalize();
-        var w=size*0.6,h=size,col=new THREE.Color(colr);
-        var A=new V().copy(center).addScaledVector(lu,-w).addScaledVector(lv,-h*0.3);
-        var B=new V().copy(center).addScaledVector(lu,w).addScaledVector(lv,-h*0.3);
-        var Cc=new V().copy(center).addScaledVector(lu,w*0.5).addScaledVector(lv,h);
-        var D=new V().copy(center).addScaledVector(lu,-w*0.5).addScaledVector(lv,h);
-        LP.push(A.x,A.y,A.z,B.x,B.y,B.z,Cc.x,Cc.y,Cc.z);LC.push(col.r,col.g,col.b,col.r,col.g,col.b,col.r,col.g,col.b);
-        LP.push(A.x,A.y,A.z,Cc.x,Cc.y,Cc.z,D.x,D.y,D.z);LC.push(col.r,col.g,col.b,col.r,col.g,col.b,col.r,col.g,col.b);
-      }
-      leafAnchors.forEach(function(an){
-        var k=an.big?(isMobile?4:7):(isMobile?2:3);
-        for(var i=0;i<k&&made<leafBudget;i++){made++;leafQuad(new V().copy(an.p).add(new V(rr(-0.7,0.7),rr(-0.7,0.7),rr(-0.7,0.7))),rr(0.5,1.15),leafCols[(rnd()*leafCols.length)|0]);}
-      });
-      if(LP.length){
-        var lg=new THREE.BufferGeometry();
-        lg.setAttribute('position',new THREE.Float32BufferAttribute(LP,3));
-        lg.setAttribute('color',new THREE.Float32BufferAttribute(LC,3));
-        lg.computeVertexNormals();lg.setDrawRange(0,0);
-        leafMesh=new THREE.Mesh(lg,new THREE.MeshLambertMaterial({vertexColors:true,side:THREE.DoubleSide,emissive:0x0c3a1c,emissiveIntensity:.3}));
-        leafMesh.userData.total=LP.length/3;group.add(leafMesh);
-      }
+      // árvore removida — fundo agora é apenas o pólen flutuante
       var spr=document.createElement('canvas');spr.width=spr.height=64;var sx=spr.getContext('2d'),gr=sx.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,'rgba(180,255,120,1)');gr.addColorStop(.3,'rgba(120,220,80,.6)');gr.addColorStop(1,'rgba(120,220,80,0)');sx.fillStyle=gr;sx.fillRect(0,0,64,64);
       var tex=new THREE.CanvasTexture(spr),pN=isMobile?500:1600,pp=new Float32Array(pN*3),spd=new Float32Array(pN);
       for(var i=0;i<pN;i++){pp[i*3]=(rnd()-0.5)*44;pp[i*3+1]=(rnd()-0.5)*44;pp[i*3+2]=(rnd()-0.5)*30;spd[i]=0.005+rnd()*0.02;}
@@ -839,10 +726,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   var mouse={x:0,y:0},tgt={x:0,y:0};
   addEventListener('mousemove',function(e){mouse.x=e.clientX/innerWidth-0.5;mouse.y=e.clientY/innerHeight-0.5;});
   function animate(){requestAnimationFrame(animate);if(!OK)return;var dt=clock.getDelta(),t=clock.getElapsedTime();tgt.x+=(mouse.x-tgt.x)*0.05;tgt.y+=(mouse.y-tgt.y)*0.05;
-    treeLines.geometry.setDrawRange(0,Math.floor(treeLines.userData.total*Math.min(1,treeCtl.progress*1.12)));
-    if(leafMesh){var lp=Math.max(0,Math.min(1,(treeCtl.progress-0.22)/0.7));leafMesh.geometry.setDrawRange(0,Math.floor(leafMesh.userData.total*lp));}
-    group.rotation.y=Math.sin(t*0.08)*0.25+tgt.x*0.5;group.rotation.x=-0.04+tgt.y*0.18;
-    camera.position.y+=((4+treeCtl.progress*12)-camera.position.y)*0.05;camera.position.x+=((tgt.x*6)-camera.position.x)*0.05;camera.lookAt(0,3+treeCtl.progress*9,0);
+    camera.position.x+=((tgt.x*4)-camera.position.x)*0.05;camera.position.y+=((6-tgt.y*3)-camera.position.y)*0.05;camera.lookAt(0,3,0);
     var arr=points.geometry.attributes.position.array,spd=points.userData.spd;for(var i=0;i<spd.length;i++){arr[i*3+1]+=spd[i]*48*dt;if(arr[i*3+1]>24)arr[i*3+1]=-24;}points.geometry.attributes.position.needsUpdate=true;points.rotation.y=t*0.02;
     renderer.render(scene,camera);}
   addEventListener('resize',function(){if(!OK)return;camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
@@ -863,10 +747,9 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     gsap.to('#heroH1 .ln span',{y:'0%',duration:1.1,ease:'expo.out',stagger:0.12,delay:0.1});
   }
 
-  /* ---- loader ---- */
-  var fill=document.getElementById('loaderFill'),pct=document.getElementById('loaderPct'),loader=document.getElementById('loader'),p=0;
-  var li=setInterval(function(){p+=Math.random()*16;if(p>=100){p=100;clearInterval(li);fill.style.width='100%';pct.textContent='100%';setTimeout(function(){loader.classList.add('done');heroIntro();startScroll();},400);}else{fill.style.width=p+'%';pct.textContent=Math.floor(p)+'%';}},110);
+  /* ---- start (sem loader) ---- */
   initGL();if(OK){animate();}else{var fb=document.createElement('div');fb.className='bg-fallback';document.body.insertBefore(fb,document.getElementById('bg'));}
+  heroIntro();startScroll();
 
   /* ---- nav scrolled + menu ---- */
   var nav=document.getElementById('nav');addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>10);},{passive:true});
