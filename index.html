@@ -175,7 +175,7 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 .badgecard .bc-r{font-family:'Plus Jakarta Sans';font-weight:700;font-size:13px;color:var(--neon);text-align:right}
 
 /* hero — card 3D que endireita no scroll (efeito tipo Aceternity, em vanilla) */
-.tilt3d-wrap{perspective:1400px}
+.tilt3d-wrap{perspective:1400px;display:none}
 .tilt3d{position:relative;width:300px;max-width:78%;margin:0 auto;border:11px solid #151916;border-radius:46px;background:#0c1610;box-shadow:0 9px 20px #0000004a,0 37px 37px #00000042,0 84px 50px #00000026,0 149px 60px #0000000a;transform:perspective(1400px) rotateX(16deg) scale(.96);transform-origin:50% 0%;will-change:transform}
 .tilt3d-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:86px;height:18px;background:#0b0e0c;border-radius:12px;z-index:3}
 .tilt3d-screen{position:relative;border-radius:36px;overflow:hidden;background:#0c1610;aspect-ratio:9/19.5}
@@ -332,7 +332,8 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
 }
 @media(max-width:860px){
   .hero__grid{grid-template-columns:1fr;gap:40px}
-  .stage{max-width:440px}
+  .stage{display:none}
+  .tilt3d-wrap{display:block}
   .features{grid-template-columns:repeat(2,1fr)}
   .process,.tms{grid-template-columns:1fr}
   .foot__grid{grid-template-columns:1fr 1fr}
@@ -446,13 +447,28 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
           </div>
         </div>
 
-        <div class="hero__visual">
+        <div class="hero__visual" aria-hidden="true">
+          <!-- DESKTOP: card das etapas -->
+          <div class="stage">
+            <article class="gcard">
+              <div class="tl__head"><div class="tl__title">Sua landing em 3 dias</div><span class="tl__live">ao vivo</span></div>
+              <div class="tl__steps">
+                <div class="tl__step tl__step--done"><div class="tl__dot"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="tl__day">Dia 1</div><div class="tl__label">Briefing + identidade</div></div></div>
+                <div class="tl__step tl__step--cur"><div class="tl__dot"></div><div><div class="tl__day">Dia 2</div><div class="tl__label">Design + copy + dev</div></div></div>
+                <div class="tl__step"><div class="tl__dot"></div><div><div class="tl__day">Dia 3</div><div class="tl__label">Revisão + entrega</div></div></div>
+              </div>
+            </article>
+            <article class="gcard badgecard">
+              <div class="bc-l"><div class="bt">Pagamento único</div><div class="bp">R$ 689<small>,90</small></div></div>
+              <div class="bc-r">10x de<br>R$ 79,50</div>
+            </article>
+          </div>
+          <!-- MOBILE: celular com o projeto ao vivo (sem rota de fuga) -->
           <div class="tilt3d-wrap">
             <div class="tilt3d" id="tilt3d">
               <span class="tilt3d-notch"></span>
               <div class="tilt3d-screen" id="tilt3dScreen">
                 <iframe src="https://xn--myllerejoopaulojardins-l4b.com/" title="Projeto Myller & João Paulo Jardins" loading="lazy" referrerpolicy="no-referrer"></iframe>
-                <a class="tilt3d-link" href="https://xn--myllerejoopaulojardins-l4b.com/" target="_blank" rel="noopener" data-cursor aria-label="Abrir projeto Myller & João Paulo Jardins"></a>
               </div>
             </div>
           </div>
