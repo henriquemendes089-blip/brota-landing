@@ -52,7 +52,7 @@ h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.05;font-weight
 #bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
 .bg-fallback{position:fixed;inset:0;z-index:0;background:radial-gradient(60% 50% at 72% 16%,rgba(22,163,74,.16),transparent 70%),radial-gradient(50% 60% at 18% 84%,rgba(163,230,53,.10),transparent 70%),var(--bg)}
 .vignette{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 100% at 50% 38%,transparent 56%,rgba(0,0,0,.6) 100%)}
-.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:overlay}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.04}
 .grain svg{width:100%;height:100%}
 
 /* cursor */
@@ -495,7 +495,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
             <div class="tilt3d" id="tilt3d">
               <span class="tilt3d-notch"></span>
               <div class="tilt3d-screen" id="tilt3dScreen">
-                <iframe id="projIframe" src="portfolio/myller/" title="Projeto Myller & João Paulo Jardins" loading="lazy" scrolling="yes"></iframe>
+                <iframe id="projIframe" data-src="portfolio/myller/" title="Projeto Myller & João Paulo Jardins" scrolling="yes"></iframe>
               </div>
             </div>
           </div>
@@ -815,7 +815,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     try{
       var canvas=document.getElementById('bg');
       renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:!isMobile,alpha:true,powerPreference:'high-performance'});
-      renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+      renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));
       renderer.setSize(innerWidth,innerHeight);
       scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x060B08,0.02);
       camera=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,0.1,200);camera.position.set(0,6,30);
@@ -823,7 +823,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
       var seed=20260603;function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
       // árvore removida — fundo agora é apenas o pólen flutuante
       var spr=document.createElement('canvas');spr.width=spr.height=64;var sx=spr.getContext('2d'),gr=sx.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,'rgba(180,255,120,1)');gr.addColorStop(.3,'rgba(120,220,80,.6)');gr.addColorStop(1,'rgba(120,220,80,0)');sx.fillStyle=gr;sx.fillRect(0,0,64,64);
-      var tex=new THREE.CanvasTexture(spr),pN=isMobile?500:1600,pp=new Float32Array(pN*3),spd=new Float32Array(pN);
+      var tex=new THREE.CanvasTexture(spr),pN=isMobile?220:700,pp=new Float32Array(pN*3),spd=new Float32Array(pN);
       for(var i=0;i<pN;i++){pp[i*3]=(rnd()-0.5)*44;pp[i*3+1]=(rnd()-0.5)*44;pp[i*3+2]=(rnd()-0.5)*30;spd[i]=0.005+rnd()*0.02;}
       var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
       points=new THREE.Points(pg,new THREE.PointsMaterial({size:isMobile?0.5:0.42,map:tex,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.9,color:0xA3E635}));points.userData.spd=spd;scene.add(points);
@@ -832,7 +832,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   }
   var mouse={x:0,y:0},tgt={x:0,y:0};
   addEventListener('mousemove',function(e){mouse.x=e.clientX/innerWidth-0.5;mouse.y=e.clientY/innerHeight-0.5;});
-  function animate(){requestAnimationFrame(animate);if(!OK)return;var dt=clock.getDelta(),t=clock.getElapsedTime();tgt.x+=(mouse.x-tgt.x)*0.05;tgt.y+=(mouse.y-tgt.y)*0.05;
+  function animate(){requestAnimationFrame(animate);if(!OK||document.hidden)return;var dt=clock.getDelta(),t=clock.getElapsedTime();tgt.x+=(mouse.x-tgt.x)*0.05;tgt.y+=(mouse.y-tgt.y)*0.05;
     camera.position.x+=((tgt.x*4)-camera.position.x)*0.05;camera.position.y+=((6-tgt.y*3)-camera.position.y)*0.05;camera.lookAt(0,3,0);
     var arr=points.geometry.attributes.position.array,spd=points.userData.spd;for(var i=0;i<spd.length;i++){arr[i*3+1]+=spd[i]*48*dt;if(arr[i*3+1]>24)arr[i*3+1]=-24;}points.geometry.attributes.position.needsUpdate=true;points.rotation.y=t*0.02;
     renderer.render(scene,camera);}
@@ -868,45 +868,33 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     addEventListener('scroll',upd3,{passive:true});upd3();
   }
 
-  /* ---- vitrine do projeto: permite SCROLL mas trava cliques/navegação (sem rota de fuga) ---- */
-  var pf=document.getElementById('projIframe');
-  if(pf){
-    pf.addEventListener('load',function(){
+  /* ---- previews (hero + galeria): carrega só o que está na tela, descarrega o resto, trava cliques/scroll ---- */
+  var previewFrames=[].slice.call(document.querySelectorAll('.pf-screen iframe[data-src],#projIframe[data-src]'));
+  if(previewFrames.length){
+    var pfInjectOnLoad=function(){
+      var ifr=this;
       try{
-        var d=pf.contentDocument;if(!d)return;
-        var st=d.createElement('style');
+        var d=ifr.contentDocument;if(!d)return;
+        if(d.getElementById('__pfblock'))return;
+        var st=d.createElement('style');st.id='__pfblock';
         st.textContent='html,body{overflow-x:hidden!important;max-width:100%!important;touch-action:pan-y!important}a,button,input,select,textarea,[onclick],[role=button]{pointer-events:none!important}';
         (d.head||d.documentElement).appendChild(st);
-        var block=function(e){e.preventDefault();e.stopPropagation();};
-        d.addEventListener('click',block,true);
-        d.addEventListener('auxclick',block,true);
-        d.addEventListener('submit',block,true);
+        var b=function(e){e.preventDefault();e.stopPropagation();};
+        d.addEventListener('click',b,true);d.addEventListener('auxclick',b,true);d.addEventListener('submit',b,true);
       }catch(e){}
-    });
-  }
-
-  /* ---- galeria de projetos: lazy-load + trava (scroll vertical, sem cliques) ---- */
-  var pfFrames=document.querySelectorAll('.pf-screen iframe[data-src]');
-  if(pfFrames.length){
-    var pfInject=function(ifr){
-      ifr.addEventListener('load',function(){
-        try{
-          var d=ifr.contentDocument;if(!d)return;
-          var st=d.createElement('style');
-          st.textContent='html,body{overflow-x:hidden!important;max-width:100%!important;touch-action:pan-y!important}a,button,input,select,textarea,[onclick],[role=button]{pointer-events:none!important}';
-          (d.head||d.documentElement).appendChild(st);
-          var b=function(e){e.preventDefault();e.stopPropagation();};
-          d.addEventListener('click',b,true);d.addEventListener('auxclick',b,true);d.addEventListener('submit',b,true);
-        }catch(e){}
-      });
     };
+    previewFrames.forEach(function(f){f.addEventListener('load',pfInjectOnLoad);});
     if('IntersectionObserver' in window){
       var pfIo=new IntersectionObserver(function(es){
-        es.forEach(function(e){if(e.isIntersecting){var ifr=e.target;if(!ifr.getAttribute('src')){pfInject(ifr);ifr.src=ifr.getAttribute('data-src');}pfIo.unobserve(ifr);}});
-      },{rootMargin:'300px'});
-      pfFrames.forEach(function(f){pfIo.observe(f);});
+        es.forEach(function(e){
+          var ifr=e.target;
+          if(e.isIntersecting){if(!ifr.getAttribute('src'))ifr.src=ifr.getAttribute('data-src');}
+          else if(ifr.getAttribute('src'))ifr.removeAttribute('src');
+        });
+      },{rootMargin:'120px'});
+      previewFrames.forEach(function(f){pfIo.observe(f);});
     }else{
-      pfFrames.forEach(function(f){pfInject(f);f.src=f.getAttribute('data-src');});
+      previewFrames.forEach(function(f){f.src=f.getAttribute('data-src');});
     }
   }
   var tg=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
@@ -914,9 +902,8 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open');});});
 
   /* ---- cursor ---- */
-  if(!isTouch){var cur=document.getElementById('cur'),dot=document.getElementById('curdot'),cx=0,cy=0,dx=0,dy=0;
-    addEventListener('mousemove',function(e){dx=e.clientX;dy=e.clientY;dot.style.transform='translate('+dx+'px,'+dy+'px) translate(-50%,-50%)';});
-    (function lp(){cx+=(dx-cx)*0.18;cy+=(dy-cy)*0.18;cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';requestAnimationFrame(lp);})();
+  if(!isTouch){var cur=document.getElementById('cur'),dot=document.getElementById('curdot');
+    addEventListener('mousemove',function(e){var t='translate('+e.clientX+'px,'+e.clientY+'px) translate(-50%,-50%)';dot.style.transform=t;cur.style.transform=t;},{passive:true});
     document.querySelectorAll('[data-cursor],a,button,summary').forEach(function(el){el.addEventListener('mouseenter',function(){cur.classList.add('grow');});el.addEventListener('mouseleave',function(){cur.classList.remove('grow');});});}
 
   /* ---- som ambiente ---- */
