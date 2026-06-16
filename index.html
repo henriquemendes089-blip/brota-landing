@@ -185,6 +185,33 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 .tilt3d-ph span{font-family:'Plus Jakarta Sans';font-weight:800;font-size:18px;color:var(--lime);opacity:.6}
 @media(prefers-reduced-motion:reduce){.tilt3d{transform:none!important}}
 
+/* ===== Projetos (galeria de dispositivos) ===== */
+.pf-carousel{display:flex;gap:30px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:12px 28px 28px;scrollbar-width:thin;scrollbar-color:rgba(163,230,53,.4) transparent}
+.pf-carousel::-webkit-scrollbar{height:8px}
+.pf-carousel::-webkit-scrollbar-track{background:transparent}
+.pf-carousel::-webkit-scrollbar-thumb{background:rgba(163,230,53,.35);border-radius:8px}
+.pf-item{flex:0 0 auto;scroll-snap-align:center;width:min(760px,88vw);display:flex;flex-direction:column;gap:16px}
+.pf-device{position:relative;border:1px solid #2b322c;border-radius:16px;background:#171c18;padding:8px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.pf-bar{display:flex;align-items:center;gap:6px;padding:5px 10px 9px}
+.pf-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
+.pf-bar .u{margin-left:8px;flex:1;height:18px;border-radius:9px;background:rgba(255,255,255,.06);font-family:'Space Grotesk';font-size:10px;color:var(--muted);display:flex;align-items:center;padding:0 12px}
+.pf-notch{display:none}
+.pf-screen{position:relative;border-radius:10px;overflow:hidden;background:#0c1610;aspect-ratio:16/10}
+.pf-screen iframe{width:100%;height:100%;border:0;display:block;pointer-events:none}
+.pf-label{text-align:center;font-family:'Plus Jakarta Sans';font-weight:700;font-size:16px;color:var(--text)}
+.pf-label span{display:block;font-family:'Space Grotesk';font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--muted);margin-top:4px}
+.pf-swipe{max-width:1160px;margin:0 auto;padding:0 28px;font-family:'Space Grotesk';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.pf-swipe svg{width:16px;height:16px;stroke:var(--neon);fill:none}
+@media(max-width:860px){
+  .pf-carousel{gap:20px;padding:12px 22px 24px}
+  .pf-item{width:80vw;max-width:300px}
+  .pf-device{border:11px solid #151916;border-radius:46px;padding:0;background:#0c1610}
+  .pf-bar{display:none}
+  .pf-notch{display:block;position:absolute;top:12px;left:50%;transform:translateX(-50%);width:86px;height:18px;background:#0b0e0c;border-radius:12px;z-index:3}
+  .pf-screen{border-radius:36px;aspect-ratio:9/19.5}
+  .pf-screen iframe{pointer-events:auto;touch-action:pan-y}
+}
+
 /* logos marquee */
 .logos{padding:46px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:10;background:rgba(6,11,8,.4)}
 .logos__title{text-align:center;font-family:'Space Grotesk';font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
@@ -559,6 +586,64 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     </div>
   </section>
 
+  <!-- PROJETOS -->
+  <section class="section section--soft" id="projetos">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Projetos no ar</span><h2>Veja de perto o que a gente <span class="accent">já plantou.</span></h2><p class="lead">Sites reais, funcionando ao vivo. Arraste pro lado pra navegar — no celular dá pra rolar e explorar cada um.</p></div>
+    </div>
+    <p class="pf-swipe rv"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Arraste para o lado</p>
+    <div class="pf-carousel" id="pfCarousel">
+      <article class="pf-item">
+        <div class="pf-device">
+          <div class="pf-bar"><i></i><i></i><i></i><span class="u">myllerejoãopaulojardins.com</span></div>
+          <span class="pf-notch"></span>
+          <div class="pf-screen"><iframe data-src="portfolio/myller/" title="Myller & João Paulo Jardins" scrolling="yes"></iframe></div>
+        </div>
+        <div class="pf-label">Myller &amp; João Paulo<span>Paisagismo · Divinópolis-MG</span></div>
+      </article>
+      <article class="pf-item">
+        <div class="pf-device">
+          <div class="pf-bar"><i></i><i></i><i></i><span class="u">liga-motors</span></div>
+          <span class="pf-notch"></span>
+          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/liga-motors-site/" title="Liga Motors" scrolling="yes"></iframe></div>
+        </div>
+        <div class="pf-label">Liga Motors<span>Automotivo</span></div>
+      </article>
+      <article class="pf-item">
+        <div class="pf-device">
+          <div class="pf-bar"><i></i><i></i><i></i><span class="u">ventus-climatizacao</span></div>
+          <span class="pf-notch"></span>
+          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/ventus-climatizacao/" title="Ventus Climatização" scrolling="yes"></iframe></div>
+        </div>
+        <div class="pf-label">Ventus Climatização<span>Climatização</span></div>
+      </article>
+      <article class="pf-item">
+        <div class="pf-device">
+          <div class="pf-bar"><i></i><i></i><i></i><span class="u">dr-marcio</span></div>
+          <span class="pf-notch"></span>
+          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/site-dr-marcio/" title="Dr. Marcio" scrolling="yes"></iframe></div>
+        </div>
+        <div class="pf-label">Dr. Marcio<span>Saúde</span></div>
+      </article>
+      <article class="pf-item">
+        <div class="pf-device">
+          <div class="pf-bar"><i></i><i></i><i></i><span class="u">unifecaf-conhecer</span></div>
+          <span class="pf-notch"></span>
+          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/unifecaf-conhecer/" title="Unifecaf Conhecer" scrolling="yes"></iframe></div>
+        </div>
+        <div class="pf-label">Unifecaf Conhecer<span>Educação</span></div>
+      </article>
+      <article class="pf-item">
+        <div class="pf-device">
+          <div class="pf-bar"><i></i><i></i><i></i><span class="u">du-jhonny-barbearia</span></div>
+          <span class="pf-notch"></span>
+          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/du-jhonny-barbearia/" title="Du Jhonny Barbearia" scrolling="yes"></iframe></div>
+        </div>
+        <div class="pf-label">Du Jhonny Barbearia<span>Barbearia</span></div>
+      </article>
+    </div>
+  </section>
+
   <!-- O QUE INCLUI -->
   <section class="section" id="inclui">
     <div class="wrap">
@@ -798,6 +883,31 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
         d.addEventListener('submit',block,true);
       }catch(e){}
     });
+  }
+
+  /* ---- galeria de projetos: lazy-load + trava (scroll vertical, sem cliques) ---- */
+  var pfFrames=document.querySelectorAll('.pf-screen iframe[data-src]');
+  if(pfFrames.length){
+    var pfInject=function(ifr){
+      ifr.addEventListener('load',function(){
+        try{
+          var d=ifr.contentDocument;if(!d)return;
+          var st=d.createElement('style');
+          st.textContent='html,body{overflow-x:hidden!important;max-width:100%!important;touch-action:pan-y!important}a,button,input,select,textarea,[onclick],[role=button]{pointer-events:none!important}';
+          (d.head||d.documentElement).appendChild(st);
+          var b=function(e){e.preventDefault();e.stopPropagation();};
+          d.addEventListener('click',b,true);d.addEventListener('auxclick',b,true);d.addEventListener('submit',b,true);
+        }catch(e){}
+      });
+    };
+    if('IntersectionObserver' in window){
+      var pfIo=new IntersectionObserver(function(es){
+        es.forEach(function(e){if(e.isIntersecting){var ifr=e.target;if(!ifr.getAttribute('src')){pfInject(ifr);ifr.src=ifr.getAttribute('data-src');}pfIo.unobserve(ifr);}});
+      },{rootMargin:'300px'});
+      pfFrames.forEach(function(f){pfIo.observe(f);});
+    }else{
+      pfFrames.forEach(function(f){pfInject(f);f.src=f.getAttribute('data-src');});
+    }
   }
   var tg=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
   tg.addEventListener('click',function(){nl.classList.toggle('open');});
