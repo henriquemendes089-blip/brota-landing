@@ -185,33 +185,40 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 .tilt3d-ph span{font-family:'Plus Jakarta Sans';font-weight:800;font-size:18px;color:var(--lime);opacity:.6}
 @media(prefers-reduced-motion:reduce){.tilt3d{transform:none!important}}
 
-/* ===== Projetos (galeria de dispositivos) ===== */
-.pf-carousel{display:flex;gap:30px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:12px 28px 28px;scrollbar-width:thin;scrollbar-color:rgba(163,230,53,.4) transparent}
-.pf-carousel::-webkit-scrollbar{height:8px}
-.pf-carousel::-webkit-scrollbar-track{background:transparent}
-.pf-carousel::-webkit-scrollbar-thumb{background:rgba(163,230,53,.35);border-radius:8px}
-.pf-item{flex:0 0 auto;scroll-snap-align:center;width:min(760px,88vw);display:flex;flex-direction:column;gap:16px}
-.pf-device{position:relative;border:1px solid #2b322c;border-radius:16px;background:#171c18;padding:8px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+/* ===== Projetos (vitrine 1 por vez) ===== */
+.pf-stage{position:relative;max-width:1100px;margin:42px auto 0;padding:0 72px}
+.pf-viewport{position:relative}
+.pf-item{display:none;flex-direction:column;align-items:center;gap:18px}
+.pf-item.active{display:flex;animation:pfFade .45s ease}
+@keyframes pfFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pf-device{position:relative;width:100%;max-width:740px;border:1px solid #2b322c;border-radius:16px;background:#171c18;padding:8px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
 .pf-bar{display:flex;align-items:center;gap:6px;padding:5px 10px 9px}
 .pf-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
 .pf-bar .u{margin-left:8px;flex:1;height:18px;border-radius:9px;background:rgba(255,255,255,.06);font-family:'Space Grotesk';font-size:10px;color:var(--muted);display:flex;align-items:center;padding:0 12px}
 .pf-notch{display:none}
 .pf-screen{position:relative;border-radius:10px;overflow:hidden;background:#0c1610;aspect-ratio:16/10}
-.pf-screen iframe{width:100%;height:100%;border:0;display:block;pointer-events:none}
+.pf-screen iframe{width:100%;height:100%;border:0;display:block;pointer-events:none;opacity:0;transition:opacity .4s}
+.pf-screen iframe.loaded{opacity:1}
 .pf-touch{display:none}
 .pf-label{text-align:center;font-family:'Plus Jakarta Sans';font-weight:700;font-size:16px;color:var(--text)}
 .pf-label span{display:block;font-family:'Space Grotesk';font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--muted);margin-top:4px}
-.pf-swipe{max-width:1160px;margin:0 auto;padding:0 28px;font-family:'Space Grotesk';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
-.pf-swipe svg{width:16px;height:16px;stroke:var(--neon);fill:none}
+.pf-arrow{position:absolute;top:42%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:rgba(10,19,13,.82);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s,border-color .25s}
+.pf-arrow:hover{background:var(--neon);border-color:var(--neon)}
+.pf-arrow svg{width:22px;height:22px;stroke:var(--text)}
+.pf-arrow:hover svg{stroke:#06210f}
+.pf-prev{left:4px}.pf-next{right:4px}
+.pf-dots{display:flex;gap:8px;justify-content:center;margin-top:24px}
+.pf-dots button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22);border:none;padding:0;cursor:pointer;transition:background .25s,width .25s}
+.pf-dots button.active{background:var(--neon);width:22px;border-radius:6px}
 @media(max-width:860px){
-  .pf-carousel{gap:20px;padding:12px 22px 24px}
-  .pf-item{width:80vw;max-width:300px}
-  .pf-device{border:11px solid #151916;border-radius:46px;padding:0;background:#0c1610}
+  .pf-stage{padding:0 46px;margin-top:30px}
+  .pf-device{max-width:262px;border:11px solid #151916;border-radius:46px;padding:0;background:#0c1610}
   .pf-bar{display:none}
   .pf-notch{display:block;position:absolute;top:12px;left:50%;transform:translateX(-50%);width:86px;height:18px;background:#0b0e0c;border-radius:12px;z-index:3}
   .pf-screen{border-radius:36px;aspect-ratio:9/19.5}
-  .pf-screen iframe{pointer-events:none}
   .pf-touch{display:block;position:absolute;inset:0;z-index:4;touch-action:none}
+  .pf-arrow{width:40px;height:40px}
+  .pf-prev{left:-4px}.pf-next{right:-4px}
 }
 
 /* logos marquee */
@@ -583,56 +590,62 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     <div class="wrap">
       <div class="sec-head rv"><span class="eyebrow">Projetos no ar</span><h2>Veja de perto o que a gente <span class="accent">já plantou.</span></h2><p class="lead">Sites reais, funcionando ao vivo. Arraste pro lado pra navegar — no celular dá pra rolar e explorar cada um.</p></div>
     </div>
-    <p class="pf-swipe rv"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Arraste para o lado</p>
-    <div class="pf-carousel" id="pfCarousel">
-      <article class="pf-item">
-        <div class="pf-device">
-          <div class="pf-bar"><i></i><i></i><i></i><span class="u">myllerejoãopaulojardins.com</span></div>
-          <span class="pf-notch"></span>
-          <div class="pf-screen"><iframe data-src="portfolio/myller/" title="Myller & João Paulo Jardins" scrolling="yes"></iframe></div>
+    <div class="wrap">
+      <div class="pf-stage">
+        <button class="pf-arrow pf-prev" id="pfPrev" aria-label="Projeto anterior" data-cursor><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="pf-viewport" id="pfViewport">
+          <article class="pf-item active">
+            <div class="pf-device">
+              <div class="pf-bar"><i></i><i></i><i></i><span class="u">myllerejoãopaulojardins.com</span></div>
+              <span class="pf-notch"></span>
+              <div class="pf-screen"><iframe data-src="portfolio/myller/" title="Myller & João Paulo Jardins" scrolling="yes"></iframe><div class="pf-touch"></div></div>
+            </div>
+            <div class="pf-label">Myller &amp; João Paulo<span>Paisagismo · Divinópolis-MG</span></div>
+          </article>
+          <article class="pf-item">
+            <div class="pf-device">
+              <div class="pf-bar"><i></i><i></i><i></i><span class="u">liga-motors</span></div>
+              <span class="pf-notch"></span>
+              <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/liga-motors-site/" title="Liga Motors" scrolling="yes"></iframe><div class="pf-touch"></div></div>
+            </div>
+            <div class="pf-label">Liga Motors<span>Automotivo</span></div>
+          </article>
+          <article class="pf-item">
+            <div class="pf-device">
+              <div class="pf-bar"><i></i><i></i><i></i><span class="u">ventus-climatizacao</span></div>
+              <span class="pf-notch"></span>
+              <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/ventus-climatizacao/" title="Ventus Climatização" scrolling="yes"></iframe><div class="pf-touch"></div></div>
+            </div>
+            <div class="pf-label">Ventus Climatização<span>Climatização</span></div>
+          </article>
+          <article class="pf-item">
+            <div class="pf-device">
+              <div class="pf-bar"><i></i><i></i><i></i><span class="u">dr-marcio</span></div>
+              <span class="pf-notch"></span>
+              <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/site-dr-marcio/" title="Dr. Marcio" scrolling="yes"></iframe><div class="pf-touch"></div></div>
+            </div>
+            <div class="pf-label">Dr. Marcio<span>Saúde</span></div>
+          </article>
+          <article class="pf-item">
+            <div class="pf-device">
+              <div class="pf-bar"><i></i><i></i><i></i><span class="u">unifecaf-conhecer</span></div>
+              <span class="pf-notch"></span>
+              <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/unifecaf-conhecer/" title="Unifecaf Conhecer" scrolling="yes"></iframe><div class="pf-touch"></div></div>
+            </div>
+            <div class="pf-label">Unifecaf Conhecer<span>Educação</span></div>
+          </article>
+          <article class="pf-item">
+            <div class="pf-device">
+              <div class="pf-bar"><i></i><i></i><i></i><span class="u">du-jhonny-barbearia</span></div>
+              <span class="pf-notch"></span>
+              <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/du-jhonny-barbearia/" title="Du Jhonny Barbearia" scrolling="yes"></iframe><div class="pf-touch"></div></div>
+            </div>
+            <div class="pf-label">Du Jhonny Barbearia<span>Barbearia</span></div>
+          </article>
         </div>
-        <div class="pf-label">Myller &amp; João Paulo<span>Paisagismo · Divinópolis-MG</span></div>
-      </article>
-      <article class="pf-item">
-        <div class="pf-device">
-          <div class="pf-bar"><i></i><i></i><i></i><span class="u">liga-motors</span></div>
-          <span class="pf-notch"></span>
-          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/liga-motors-site/" title="Liga Motors" scrolling="yes"></iframe></div>
-        </div>
-        <div class="pf-label">Liga Motors<span>Automotivo</span></div>
-      </article>
-      <article class="pf-item">
-        <div class="pf-device">
-          <div class="pf-bar"><i></i><i></i><i></i><span class="u">ventus-climatizacao</span></div>
-          <span class="pf-notch"></span>
-          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/ventus-climatizacao/" title="Ventus Climatização" scrolling="yes"></iframe></div>
-        </div>
-        <div class="pf-label">Ventus Climatização<span>Climatização</span></div>
-      </article>
-      <article class="pf-item">
-        <div class="pf-device">
-          <div class="pf-bar"><i></i><i></i><i></i><span class="u">dr-marcio</span></div>
-          <span class="pf-notch"></span>
-          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/site-dr-marcio/" title="Dr. Marcio" scrolling="yes"></iframe></div>
-        </div>
-        <div class="pf-label">Dr. Marcio<span>Saúde</span></div>
-      </article>
-      <article class="pf-item">
-        <div class="pf-device">
-          <div class="pf-bar"><i></i><i></i><i></i><span class="u">unifecaf-conhecer</span></div>
-          <span class="pf-notch"></span>
-          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/unifecaf-conhecer/" title="Unifecaf Conhecer" scrolling="yes"></iframe></div>
-        </div>
-        <div class="pf-label">Unifecaf Conhecer<span>Educação</span></div>
-      </article>
-      <article class="pf-item">
-        <div class="pf-device">
-          <div class="pf-bar"><i></i><i></i><i></i><span class="u">du-jhonny-barbearia</span></div>
-          <span class="pf-notch"></span>
-          <div class="pf-screen"><iframe data-src="https://henriquemendes089-blip.github.io/du-jhonny-barbearia/" title="Du Jhonny Barbearia" scrolling="yes"></iframe></div>
-        </div>
-        <div class="pf-label">Du Jhonny Barbearia<span>Barbearia</span></div>
-      </article>
+        <button class="pf-arrow pf-next" id="pfNext" aria-label="Próximo projeto" data-cursor><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="pf-dots" id="pfDots"></div>
+      </div>
     </div>
   </section>
 
@@ -860,60 +873,53 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     addEventListener('scroll',upd3,{passive:true});upd3();
   }
 
-  /* ---- previews (hero + galeria): carrega só o que está na tela, descarrega o resto, trava cliques/scroll ---- */
-  var previewFrames=[].slice.call(document.querySelectorAll('.pf-screen iframe[data-src],#projIframe[data-src]'));
-  if(previewFrames.length){
-    var pfInjectOnLoad=function(){
-      var ifr=this;
+  /* ---- vitrine de projetos: 1 por vez, carrega só o ativo (mais leve) ---- */
+  (function(){
+    var stage=document.getElementById('projetos');if(!stage)return;
+    var items=[].slice.call(stage.querySelectorAll('.pf-item'));if(!items.length)return;
+    var frames=items.map(function(it){return it.querySelector('iframe');});
+    var dotsWrap=document.getElementById('pfDots');
+    var current=0,inView=false,n=items.length;
+    function onFrameLoad(){
+      var ifr=this;ifr.classList.add('loaded');
       try{
-        var d=ifr.contentDocument;if(!d)return;
-        if(d.getElementById('__pfblock'))return;
+        var d=ifr.contentDocument;if(!d||d.getElementById('__pfblock'))return;
         var st=d.createElement('style');st.id='__pfblock';
         st.textContent='html,body{overflow-x:hidden!important;max-width:100%!important;touch-action:pan-y!important}a,button,input,select,textarea,[onclick],[role=button]{pointer-events:none!important}';
         (d.head||d.documentElement).appendChild(st);
         var b=function(e){e.preventDefault();e.stopPropagation();};
         d.addEventListener('click',b,true);d.addEventListener('auxclick',b,true);d.addEventListener('submit',b,true);
       }catch(e){}
-    };
-    previewFrames.forEach(function(f){f.addEventListener('load',pfInjectOnLoad);});
+    }
+    frames.forEach(function(f){f.addEventListener('load',onFrameLoad);});
+    function loadActive(){
+      if(!inView)return;
+      frames.forEach(function(f,i){
+        if(i===current){if(!f.getAttribute('src'))f.src=f.getAttribute('data-src');}
+        else if(f.getAttribute('src')){f.classList.remove('loaded');f.removeAttribute('src');}
+      });
+    }
+    function unloadAll(){frames.forEach(function(f){if(f.getAttribute('src')){f.classList.remove('loaded');f.removeAttribute('src');}});}
+    function go(i){
+      current=(i%n+n)%n;
+      items.forEach(function(it,idx){it.classList.toggle('active',idx===current);});
+      if(dotsWrap)[].forEach.call(dotsWrap.children,function(d,idx){d.classList.toggle('active',idx===current);});
+      loadActive();
+    }
+    if(dotsWrap){items.forEach(function(it,idx){var b=document.createElement('button');b.setAttribute('aria-label','Projeto '+(idx+1));if(idx===0)b.className='active';b.addEventListener('click',function(){go(idx);});dotsWrap.appendChild(b);});}
+    var prev=document.getElementById('pfPrev'),next=document.getElementById('pfNext');
+    if(prev)prev.addEventListener('click',function(){go(current-1);});
+    if(next)next.addEventListener('click',function(){go(current+1);});
     if('IntersectionObserver' in window){
-      var pfIo=new IntersectionObserver(function(es){
-        es.forEach(function(e){
-          var ifr=e.target;
-          if(e.isIntersecting){if(!ifr.getAttribute('src'))ifr.src=ifr.getAttribute('data-src');}
-          else if(ifr.getAttribute('src'))ifr.removeAttribute('src');
-        });
-      },{rootMargin:'120px'});
-      previewFrames.forEach(function(f){pfIo.observe(f);});
-    }else{
-      previewFrames.forEach(function(f){f.src=f.getAttribute('data-src');});
-    }
-  }
-
-  /* ---- mobile: arrastar horizontal move o carrossel; vertical rola o site dentro do celular ---- */
-  (function(){
-    var car=document.getElementById('pfCarousel');if(!car)return;
-    function snap(){
-      var cr=car.getBoundingClientRect(),center=cr.left+cr.width/2,best=null,bd=1e9;
-      car.querySelectorAll('.pf-item').forEach(function(it){var r=it.getBoundingClientRect(),c=r.left+r.width/2,d=Math.abs(c-center);if(d<bd){bd=d;best=it;}});
-      if(best){var r=best.getBoundingClientRect();car.scrollTo({left:car.scrollLeft+((r.left+r.width/2)-center),behavior:'smooth'});}
-    }
-    car.querySelectorAll('.pf-screen').forEach(function(screen){
-      var ifr=screen.querySelector('iframe');
-      var ov=document.createElement('div');ov.className='pf-touch';screen.appendChild(ov);
-      var sx=0,sy=0,carL=0,ifrT=0,dir=null,on=false;
-      ov.addEventListener('touchstart',function(e){
-        if(e.touches.length!==1)return;var t=e.touches[0];sx=t.clientX;sy=t.clientY;carL=car.scrollLeft;dir=null;on=true;
-        try{ifrT=(ifr.contentWindow&&ifr.contentWindow.scrollY)||0;}catch(_){ifrT=0;}
-      },{passive:false});
-      ov.addEventListener('touchmove',function(e){
-        if(!on)return;var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;
-        if(!dir){if(Math.abs(dx)>8||Math.abs(dy)>8){dir=Math.abs(dx)>Math.abs(dy)?'h':'v';}else return;}
-        e.preventDefault();
-        if(dir==='h'){car.scrollLeft=carL-dx;}
-        else{try{ifr.contentWindow.scrollTo(0,ifrT-dy);}catch(_){}}
-      },{passive:false});
-      ov.addEventListener('touchend',function(){if(dir==='h')snap();on=false;dir=null;});
+      new IntersectionObserver(function(es){es.forEach(function(e){inView=e.isIntersecting;if(inView)loadActive();else unloadAll();});},{rootMargin:'150px'}).observe(stage);
+    }else{inView=true;loadActive();}
+    /* swipe no celular: horizontal troca projeto, vertical rola o site */
+    items.forEach(function(it){
+      var ov=it.querySelector('.pf-touch');if(!ov)return;var ifr=it.querySelector('iframe');
+      var sx=0,sy=0,ifrT=0,dir=null,on=false;
+      ov.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;var t=e.touches[0];sx=t.clientX;sy=t.clientY;dir=null;on=true;try{ifrT=(ifr.contentWindow&&ifr.contentWindow.scrollY)||0;}catch(_){ifrT=0;}},{passive:false});
+      ov.addEventListener('touchmove',function(e){if(!on)return;var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(!dir){if(Math.abs(dx)>8||Math.abs(dy)>8){dir=Math.abs(dx)>Math.abs(dy)?'h':'v';}else return;}e.preventDefault();if(dir==='v'){try{ifr.contentWindow.scrollTo(0,ifrT-dy);}catch(_){}}},{passive:false});
+      ov.addEventListener('touchend',function(e){if(dir==='h'){var t=e.changedTouches[0],dx=t.clientX-sx;if(dx<=-40)go(current+1);else if(dx>=40)go(current-1);}on=false;dir=null;},{passive:false});
       ov.addEventListener('touchcancel',function(){on=false;dir=null;});
     });
   })();
