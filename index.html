@@ -186,18 +186,18 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 @media(prefers-reduced-motion:reduce){.tilt3d{transform:none!important}}
 
 /* ===== Projetos (vitrine 1 por vez) ===== */
-.pf-stage{position:relative;max-width:1100px;margin:42px auto 0;padding:0 72px}
+.pf-stage{position:relative;max-width:1280px;margin:42px auto 0;padding:0 80px}
 .pf-viewport{position:relative}
 .pf-item{display:none;flex-direction:column;align-items:center;gap:18px}
 .pf-item.active{display:flex;animation:pfFade .45s ease}
 @keyframes pfFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.pf-device{position:relative;width:100%;max-width:740px;border:1px solid #2b322c;border-radius:16px;background:#171c18;padding:8px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.pf-device{position:relative;width:100%;max-width:960px;border:1px solid #2b322c;border-radius:16px;background:#171c18;padding:8px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
 .pf-bar{display:flex;align-items:center;gap:6px;padding:5px 10px 9px}
 .pf-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
 .pf-bar .u{margin-left:8px;flex:1;height:18px;border-radius:9px;background:rgba(255,255,255,.06);font-family:'Space Grotesk';font-size:10px;color:var(--muted);display:flex;align-items:center;padding:0 12px}
 .pf-notch{display:none}
 .pf-screen{position:relative;border-radius:10px;overflow:hidden;background:#0c1610;aspect-ratio:16/10}
-.pf-screen iframe{width:100%;height:100%;border:0;display:block;pointer-events:none;opacity:0;transition:opacity .4s}
+.pf-screen iframe{width:100%;height:100%;border:0;display:block;pointer-events:auto;opacity:0;transition:opacity .4s}
 .pf-screen iframe.loaded{opacity:1}
 .pf-touch{display:none}
 .pf-label{text-align:center;font-family:'Plus Jakarta Sans';font-weight:700;font-size:16px;color:var(--text)}
@@ -216,6 +216,7 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
   .pf-bar{display:none}
   .pf-notch{display:block;position:absolute;top:12px;left:50%;transform:translateX(-50%);width:86px;height:18px;background:#0b0e0c;border-radius:12px;z-index:3}
   .pf-screen{border-radius:36px;aspect-ratio:9/19.5}
+  .pf-screen iframe{pointer-events:none;position:absolute;top:0;left:0;width:390px;height:845px;transform-origin:0 0}
   .pf-touch{display:block;position:absolute;inset:0;z-index:4;touch-action:none}
   .pf-arrow{width:40px;height:40px}
   .pf-prev{left:-4px}.pf-next{right:-4px}
@@ -880,8 +881,16 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     var frames=items.map(function(it){return it.querySelector('iframe');});
     var dotsWrap=document.getElementById('pfDots');
     var current=0,inView=false,n=items.length;
+    function fitPhones(){
+      var mob=window.matchMedia('(max-width:860px)').matches;
+      items.forEach(function(it){
+        var ifr=it.querySelector('iframe'),sc=it.querySelector('.pf-screen');
+        if(mob){var w=sc.clientWidth;if(w)ifr.style.transform='scale('+(w/390)+')';}
+        else ifr.style.transform='';
+      });
+    }
     function onFrameLoad(){
-      var ifr=this;ifr.classList.add('loaded');
+      var ifr=this;ifr.classList.add('loaded');fitPhones();
       try{
         var d=ifr.contentDocument;if(!d||d.getElementById('__pfblock'))return;
         var st=d.createElement('style');st.id='__pfblock';
@@ -904,7 +913,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
       current=(i%n+n)%n;
       items.forEach(function(it,idx){it.classList.toggle('active',idx===current);});
       if(dotsWrap)[].forEach.call(dotsWrap.children,function(d,idx){d.classList.toggle('active',idx===current);});
-      loadActive();
+      loadActive();fitPhones();
     }
     if(dotsWrap){items.forEach(function(it,idx){var b=document.createElement('button');b.setAttribute('aria-label','Projeto '+(idx+1));if(idx===0)b.className='active';b.addEventListener('click',function(){go(idx);});dotsWrap.appendChild(b);});}
     var prev=document.getElementById('pfPrev'),next=document.getElementById('pfNext');
@@ -913,12 +922,13 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(es){es.forEach(function(e){inView=e.isIntersecting;if(inView)loadActive();else unloadAll();});},{rootMargin:'150px'}).observe(stage);
     }else{inView=true;loadActive();}
-    /* swipe no celular: horizontal troca projeto, vertical rola o site */
+    fitPhones();window.addEventListener('resize',fitPhones,{passive:true});
+    /* swipe no celular: horizontal troca projeto, vertical rola o site (ciente da escala) */
     items.forEach(function(it){
-      var ov=it.querySelector('.pf-touch');if(!ov)return;var ifr=it.querySelector('iframe');
-      var sx=0,sy=0,ifrT=0,dir=null,on=false;
-      ov.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;var t=e.touches[0];sx=t.clientX;sy=t.clientY;dir=null;on=true;try{ifrT=(ifr.contentWindow&&ifr.contentWindow.scrollY)||0;}catch(_){ifrT=0;}},{passive:false});
-      ov.addEventListener('touchmove',function(e){if(!on)return;var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(!dir){if(Math.abs(dx)>8||Math.abs(dy)>8){dir=Math.abs(dx)>Math.abs(dy)?'h':'v';}else return;}e.preventDefault();if(dir==='v'){try{ifr.contentWindow.scrollTo(0,ifrT-dy);}catch(_){}}},{passive:false});
+      var ov=it.querySelector('.pf-touch');if(!ov)return;var ifr=it.querySelector('iframe'),sc=it.querySelector('.pf-screen');
+      var sx=0,sy=0,ifrT=0,dir=null,on=false,scl=1;
+      ov.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;var t=e.touches[0];sx=t.clientX;sy=t.clientY;dir=null;on=true;scl=(sc.clientWidth/390)||1;try{ifrT=(ifr.contentWindow&&ifr.contentWindow.scrollY)||0;}catch(_){ifrT=0;}},{passive:false});
+      ov.addEventListener('touchmove',function(e){if(!on)return;var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(!dir){if(Math.abs(dx)>8||Math.abs(dy)>8){dir=Math.abs(dx)>Math.abs(dy)?'h':'v';}else return;}e.preventDefault();if(dir==='v'){try{ifr.contentWindow.scrollTo(0,ifrT-dy/scl);}catch(_){}}},{passive:false});
       ov.addEventListener('touchend',function(e){if(dir==='h'){var t=e.changedTouches[0],dx=t.clientX-sx;if(dx<=-40)go(current+1);else if(dx>=40)go(current-1);}on=false;dir=null;},{passive:false});
       ov.addEventListener('touchcancel',function(){on=false;dir=null;});
     });
