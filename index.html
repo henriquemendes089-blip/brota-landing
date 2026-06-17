@@ -116,7 +116,7 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 
 /* HERO */
 .hero{position:relative;z-index:10;padding:70px 0 90px}
-.hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+.hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:stretch}
 .hero__live{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-size:12px;letter-spacing:.06em;color:var(--lime);border:1px solid var(--line);background:rgba(163,230,53,.06);padding:7px 14px;border-radius:30px;margin-bottom:24px}
 .hero__live-dot{width:7px;height:7px;border-radius:50%;background:var(--neon);animation:pdot 2s infinite}
 .hero h1{font-size:clamp(38px,5.6vw,72px);line-height:1.0;letter-spacing:-.03em}
@@ -154,7 +154,11 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 .rating-text strong{color:var(--text)}
 
 /* hero stage (cards de vidro) */
-.stage{position:relative;display:flex;flex-direction:column;gap:16px}
+.stage{position:relative;display:flex;flex-direction:column;gap:16px;justify-content:space-between;height:100%}
+.gincl{list-style:none;margin:0;display:flex;flex-direction:column;gap:11px}
+.gincl li{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:300;color:var(--text)}
+.gincl svg{width:17px;height:17px;stroke:var(--neon);fill:none;flex-shrink:0}
+.hero__proof{display:flex;align-items:center;gap:14px}
 .gcard{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(163,230,53,.05),rgba(255,255,255,.02));backdrop-filter:blur(10px);padding:20px}
 .tl__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
 .tl__title{font-family:'Plus Jakarta Sans';font-weight:700;font-size:15px}
@@ -370,7 +374,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
 }
 @media(max-width:860px){
   .hero__grid{grid-template-columns:1fr;gap:40px}
-  .stage{max-width:440px;margin:0 auto}
+  .stage{max-width:440px;margin:0 auto;height:auto;justify-content:flex-start}
   .features{grid-template-columns:repeat(2,1fr)}
   .process,.tms{grid-template-columns:1fr}
   .foot__grid{grid-template-columns:1fr 1fr}
@@ -469,23 +473,9 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
             <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>1 rodada de revisão grátis</strong> · ajustes finais sem custo</span></div>
           </div>
 
-          <div class="hero__social">
-            <div class="avatars" aria-hidden="true"><span>RC</span><span>JM</span><span>LS</span><span>PA</span><span>+120</span></div>
-            <div>
-              <div class="rating-stars" aria-label="4,9 de 5">
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-              </div>
-              <div class="rating-text"><strong>4,9 / 5</strong> · +127 clientes atendidos</div>
-            </div>
-          </div>
         </div>
 
         <div class="hero__visual" aria-hidden="true">
-          <!-- DESKTOP: card das etapas -->
           <div class="stage">
             <article class="gcard">
               <div class="tl__head"><div class="tl__title">Sua landing em 3 dias</div><span class="tl__live">ao vivo</span></div>
@@ -495,9 +485,28 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
                 <div class="tl__step"><div class="tl__dot"></div><div><div class="tl__day">Dia 3</div><div class="tl__label">Revisão + entrega</div></div></div>
               </div>
             </article>
-            <article class="gcard badgecard">
-              <div class="bc-l"><div class="bt">Pagamento único</div><div class="bp">R$ 689<small>,90</small></div></div>
-              <div class="bc-r">10x de<br>R$ 79,50</div>
+            <article class="gcard">
+              <div class="tl__head"><div class="tl__title">Tudo que vem junto</div></div>
+              <ul class="gincl">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first + responsivo</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Copy de venda profissional</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEO técnico — 90+ no Google</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp integrado</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 revisão grátis + garantia de 7 dias</li>
+              </ul>
+            </article>
+            <article class="gcard hero__proof">
+              <div class="avatars"><span>RC</span><span>JM</span><span>LS</span><span>PA</span><span>+200</span></div>
+              <div>
+                <div class="rating-stars" aria-label="4,9 de 5">
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                </div>
+                <div class="rating-text"><strong>4,9 / 5</strong> · +200 clientes em todo o Brasil</div>
+              </div>
             </article>
           </div>
         </div>
@@ -512,8 +521,9 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     </div>
     <div class="logos__vp">
       <div class="logos__track">
-        <span>Intertrack</span><span>Opção Ferragens</span><span>Digital Insider</span><span>Renato Lima</span><span>Rio Claro Pneus</span><span>Seu Podcast BH</span><span>Venturi Rastreamento</span>
-        <span>Intertrack</span><span>Opção Ferragens</span><span>Digital Insider</span><span>Renato Lima</span><span>Rio Claro Pneus</span><span>Seu Podcast BH</span><span>Venturi Rastreamento</span>
+        <span>UniFECAF</span><span>Lojas Marcellus</span><span>Ventus Climatização</span><span>Liga Motors</span><span>Dr. Marcio</span>
+        <span>UniFECAF</span><span>Lojas Marcellus</span><span>Ventus Climatização</span><span>Liga Motors</span><span>Dr. Marcio</span>
+        <span>UniFECAF</span><span>Lojas Marcellus</span><span>Ventus Climatização</span><span>Liga Motors</span><span>Dr. Marcio</span>
       </div>
     </div>
   </section>
