@@ -930,6 +930,17 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   var sb=document.getElementById('soundBtn'),ac=null,osc=null,gn=null,on=false;
   sb.addEventListener('click',function(){on=!on;sb.classList.toggle('on',on);if(on){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();osc=ac.createOscillator();gn=ac.createGain();osc.type='sine';osc.frequency.value=72;gn.gain.value=0;osc.connect(gn);gn.connect(ac.destination);osc.start();gn.gain.linearRampToValueAtTime(0.04,ac.currentTime+1.2);}catch(e){}}else if(gn&&ac){gn.gain.linearRampToValueAtTime(0,ac.currentTime+0.4);setTimeout(function(){try{osc.stop();}catch(e){}},500);}});
 
+  /* ---- faq accordion ---- */
+  document.querySelectorAll('.faq__item').forEach(function(item){
+    item.addEventListener('toggle',function(){
+      if(item.open){
+        document.querySelectorAll('.faq__item[open]').forEach(function(other){
+          if(other!==item)other.removeAttribute('open');
+        });
+      }
+    });
+  });
+
   /* ---- testimonials carousel dots ---- */
   (function(){
     var tms=document.querySelector('.tms');
