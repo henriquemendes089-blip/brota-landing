@@ -509,7 +509,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   <!-- PROJETOS -->
   <section class="section section--soft" id="projetos">
     <div class="wrap">
-      <div class="sec-head rv"><span class="eyebrow">Projetos no ar</span><h2>Veja de perto o que a gente <span class="accent">já plantou.</span></h2><p class="lead">Sites reais, funcionando ao vivo. Arraste pro lado pra navegar — no celular dá pra rolar e explorar cada um.</p></div>
+      <div class="sec-head rv"><span class="eyebrow">Projetos no ar</span><h2>Veja de perto o que a gente <span class="accent">já plantou.</span></h2><p class="lead">Sites reais, funcionando ao vivo. Use as setas para navegar entre os projetos.</p></div>
     </div>
     <div class="wrap">
       <div class="pf-stage">
@@ -909,10 +909,9 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     frames.forEach(function(f){f.addEventListener('load',onFrameLoad);});
     function loadActive(){
       if(!inView)return;
-      // carrega atual + vizinhos, nunca descarrega
-      var toLoad=[current,(current+1)%n,(current-1+n)%n];
-      frames.forEach(function(f,i){
-        if(toLoad.indexOf(i)!==-1&&!f.getAttribute('src'))f.src=f.getAttribute('data-src');
+      // precarrega todos de uma vez quando a seção fica visível
+      frames.forEach(function(f){
+        if(!f.getAttribute('src'))f.src=f.getAttribute('data-src');
       });
     }
     function unloadAll(){/* mantém iframes carregados para não recarregar */}
@@ -930,14 +929,11 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
       new IntersectionObserver(function(es){es.forEach(function(e){inView=e.isIntersecting;if(inView)loadActive();else unloadAll();});},{rootMargin:'150px'}).observe(stage);
     }else{inView=true;loadActive();}
     fitPhones();window.addEventListener('resize',fitPhones,{passive:true});
-    /* swipe no celular: horizontal troca projeto, vertical rola o site (ciente da escala) */
+    /* overlay pf-touch: apenas bloqueia cliques acidentais no iframe, sem swipe */
     items.forEach(function(it){
-      var ov=it.querySelector('.pf-touch');if(!ov)return;var ifr=it.querySelector('iframe'),sc=it.querySelector('.pf-screen');
-      var sx=0,sy=0,ifrT=0,dir=null,on=false,scl=1;
-      ov.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;var t=e.touches[0];sx=t.clientX;sy=t.clientY;dir=null;on=true;scl=(sc.clientWidth/390)||1;try{ifrT=(ifr.contentWindow&&ifr.contentWindow.scrollY)||0;}catch(_){ifrT=0;}},{passive:false});
-      ov.addEventListener('touchmove',function(e){if(!on)return;var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(!dir){if(Math.abs(dx)>8||Math.abs(dy)>8){dir=Math.abs(dx)>Math.abs(dy)?'h':'v';}else return;}e.preventDefault();if(dir==='v'){try{ifr.contentWindow.scrollTo(0,ifrT-dy/scl);}catch(_){}}},{passive:false});
-      ov.addEventListener('touchend',function(e){if(dir==='h'){var t=e.changedTouches[0],dx=t.clientX-sx;if(dx<=-28)go(current+1);else if(dx>=28)go(current-1);}on=false;dir=null;},{passive:false});
-      ov.addEventListener('touchcancel',function(){on=false;dir=null;});
+      var ov=it.querySelector('.pf-touch');if(!ov)return;
+      // remove o overlay no mobile para o iframe receber scroll normalmente
+      if(window.matchMedia('(max-width:860px)').matches)ov.style.display='none';
     });
   })();
   var tg=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
