@@ -941,58 +941,48 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     addEventListener('mousemove',function(e){var t='translate('+e.clientX+'px,'+e.clientY+'px) translate(-50%,-50%)';dot.style.transform=t;cur.style.transform=t;},{passive:true});
     document.querySelectorAll('[data-cursor],a,button,summary').forEach(function(el){el.addEventListener('mouseenter',function(){cur.classList.add('grow');});el.addEventListener('mouseleave',function(){cur.classList.remove('grow');});});}
 
-  /* ---- som ambiente espacial ---- */
+  /* ---- trilha ambiente ---- */
   (function(){
-    var sb=document.getElementById('soundBtn'),ac=null,master=null,allNodes=[],on=false;
-    function build(){
-      ac=new(window.AudioContext||window.webkitAudioContext)();
-      master=ac.createGain();master.gain.value=0;master.connect(ac.destination);
+    var sb=document.getElementById('soundBtn');
+    var audio=new Audio('ambient.mp3');
+    audio.loop=true;
+    audio.volume=0;
+    audio.currentTime=30;
 
-      // delay / eco espacial
-      var delay=ac.createDelay(4);delay.delayTime.value=1.8;
-      var delayGain=ac.createGain();delayGain.gain.value=0.28;
-      var feed=ac.createGain();feed.gain.value=0.4;
-      delay.connect(delayGain);delayGain.connect(master);
-      delay.connect(feed);feed.connect(delay);
-
-      // drone: camadas graves detonadas
-      [{f:40,t:'sine',v:0.32},{f:60,t:'sine',v:0.18},{f:80.4,t:'triangle',v:0.10},
-       {f:120,t:'sine',v:0.07},{f:160.6,t:'sine',v:0.04}].forEach(function(d){
-        var o=ac.createOscillator(),g=ac.createGain();
-        o.type=d.t;o.frequency.value=d.f;g.gain.value=d.v;
-        o.connect(g);g.connect(master);g.connect(delay);
-        o.start();allNodes.push(o);
-      });
-
-      // shimmer alto: harmônicos sutis
-      [{f:480,v:0.018},{f:720,v:0.012},{f:960,v:0.008}].forEach(function(d){
-        var o=ac.createOscillator(),g=ac.createGain();
-        o.type='sine';o.frequency.value=d.f;g.gain.value=d.v;
-        // vibrato suave
-        var lfo=ac.createOscillator(),lg=ac.createGain();
-        lfo.frequency.value=0.18+d.f/10000;lg.gain.value=2.5;
-        lfo.connect(lg);lg.connect(o.frequency);lfo.start();
-        o.connect(g);g.connect(master);o.start();allNodes.push(o,lfo);
-      });
-
-      // LFO de respiração no master
-      var breathLfo=ac.createOscillator(),breathGain=ac.createGain();
-      breathLfo.frequency.value=0.04;breathGain.gain.value=0.06;
-      breathLfo.connect(breathGain);breathGain.connect(master.gain);
-      breathLfo.start();allNodes.push(breathLfo);
+    function fadeTo(target,dur){
+      var start=audio.volume,steps=40,step=0;
+      var iv=setInterval(function(){
+        step++;
+        audio.volume=Math.max(0,Math.min(1,start+(target-start)*(step/steps)));
+        if(step>=steps)clearInterval(iv);
+      },dur/steps*1000);
     }
+
+    // tenta autoplay ao carregar
+    var played=false;
+    function tryPlay(){
+      if(played)return;
+      audio.play().then(function(){
+        played=true;
+        fadeTo(0.45,3);
+        sb.classList.add('on');
+      }).catch(function(){});
+    }
+    // tenta no primeiro clique ou toque do usuário
+    document.addEventListener('click',tryPlay,{once:true});
+    document.addEventListener('touchstart',tryPlay,{once:true});
+    // tenta direto (funciona se política do browser permitir)
+    tryPlay();
+
     sb.addEventListener('click',function(){
-      on=!on;sb.classList.toggle('on',on);
-      if(on){
-        try{
-          if(!ac)build();
-          if(ac.state==='suspended')ac.resume();
-          master.gain.cancelScheduledValues(ac.currentTime);
-          master.gain.linearRampToValueAtTime(0.55,ac.currentTime+3);
-        }catch(e){}
-      }else if(master&&ac){
-        master.gain.cancelScheduledValues(ac.currentTime);
-        master.gain.linearRampToValueAtTime(0,ac.currentTime+2);
+      if(!played){tryPlay();return;}
+      var isOn=sb.classList.toggle('on');
+      if(isOn){
+        if(audio.paused){audio.currentTime=30;audio.play();}
+        fadeTo(0.45,1.5);
+      }else{
+        fadeTo(0,1.5);
+        setTimeout(function(){if(audio.volume===0)audio.pause();},1600);
       }
     });
   })();
