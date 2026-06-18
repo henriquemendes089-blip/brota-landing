@@ -115,10 +115,10 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 .sec-head .lead{margin-top:20px;font-size:clamp(16px,1.7vw,19px);font-weight:300;color:var(--muted);line-height:1.65}
 
 /* word cycler */
+@keyframes dropWord{from{transform:translateY(-110%)}to{transform:translateY(0)}}
 .word-cycle{display:inline-block;overflow:hidden;vertical-align:bottom;line-height:1.05}
-.word-cycle__inner{display:block;transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .45s ease}
-.word-cycle__inner.exit{transform:translateY(-110%);opacity:0}
-.word-cycle__inner.enter{transform:translateY(110%);opacity:0;transition:none}
+.word-cycle__inner{display:block}
+.word-cycle__inner.dropping{animation:dropWord .5s cubic-bezier(.22,1,.36,1) forwards}
 
 /* HERO */
 .hero{position:relative;z-index:10;padding:80px 0 100px}
@@ -952,16 +952,11 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     var idx=0;
     function next(){
       var inner=el.querySelector('.word-cycle__inner');
-      inner.classList.add('exit');
-      setTimeout(function(){
-        idx=(idx+1)%words.length;
-        inner.classList.add('enter');
-        inner.classList.remove('exit');
-        inner.textContent=words[idx];
-        // força reflow
-        inner.getBoundingClientRect();
-        inner.classList.remove('enter');
-      },450);
+      idx=(idx+1)%words.length;
+      inner.classList.remove('dropping');
+      inner.textContent=words[idx];
+      inner.getBoundingClientRect(); // força reflow
+      inner.classList.add('dropping');
     }
     setInterval(next,2200);
   })();
