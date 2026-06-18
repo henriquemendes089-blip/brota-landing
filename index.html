@@ -414,6 +414,39 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   .hero h1 .ln span{transform:none!important}
   .rv{opacity:1;transform:none}
 }
+/* === MINI QUIZ === */
+.qz-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(6,11,8,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .3s}
+.qz-overlay.open{opacity:1;pointer-events:all}
+.qz-box{position:relative;background:linear-gradient(145deg,#0e2014,#060b08);border:1px solid var(--line);border-radius:22px;padding:36px 32px 32px;max-width:460px;width:100%;box-shadow:0 40px 90px rgba(0,0,0,.7),0 0 0 1px rgba(98,202,83,.1);max-height:90vh;overflow-y:auto}
+.qz-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer;line-height:1;padding:4px 8px;border-radius:6px;transition:color .2s;font-family:sans-serif}
+.qz-close:hover{color:var(--text)}
+.qz-progress{display:flex;gap:6px;margin-bottom:28px}
+.qz-dot{height:4px;border-radius:4px;background:rgba(255,255,255,.1);transition:background .35s,width .35s;width:24px}
+.qz-dot.active{background:var(--lime);width:48px}
+.qz-icon{font-size:34px;margin-bottom:10px;display:block}
+.qz-title{font-family:'Plus Jakarta Sans';font-weight:800;font-size:21px;line-height:1.2;margin:0 0 8px;color:var(--text)}
+.qz-sub{font-size:14px;color:var(--muted);margin:0 0 22px;line-height:1.55}
+.qz-input{width:100%;background:rgba(255,255,255,.05);border:1.5px solid var(--line);border-radius:10px;padding:14px 16px;font-family:'Space Grotesk';font-size:16px;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;margin-bottom:14px;box-sizing:border-box}
+.qz-input:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(98,202,83,.12)}
+.qz-input::placeholder{color:rgba(255,255,255,.3)}
+.qz-btn-next{width:100%;justify-content:center}
+.qz-options{display:flex;flex-direction:column;gap:11px}
+.qz-option{background:rgba(255,255,255,.04);border:1.5px solid var(--line);border-radius:14px;padding:15px 18px;cursor:pointer;text-align:left;transition:border-color .2s,background .2s,transform .15s;display:flex;align-items:center;gap:14px;color:var(--text);width:100%}
+.qz-option:hover{border-color:var(--lime);background:rgba(98,202,83,.07);transform:translateY(-1px)}
+.qz-option.selected{border-color:var(--lime);background:rgba(98,202,83,.11)}
+.qz-opt-icon{font-size:26px;flex-shrink:0}
+.qz-option strong{display:block;font-family:'Plus Jakarta Sans';font-weight:700;font-size:15px;margin-bottom:3px}
+.qz-option small{font-size:12.5px;color:var(--muted)}
+.qz-step{display:none;animation:qzFade .25s ease}
+.qz-step.active{display:block}
+@keyframes qzFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.qz-wa-btns{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.qz-wa-btn{background:var(--wa)!important;color:#fff!important;gap:10px;justify-content:center;width:100%;font-size:15px;border-radius:50px!important;padding:16px 24px!important;display:flex;align-items:center;text-decoration:none;font-family:'Plus Jakarta Sans';font-weight:700;transition:opacity .2s,transform .2s}
+.qz-wa-btn:hover{opacity:.88;transform:translateY(-2px)}
+.qz-wa-btn svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
+.qz-summary{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13.5px;color:var(--muted);line-height:1.7}
+.qz-summary strong{color:var(--text);font-weight:600}
+@media(max-width:500px){.qz-box{padding:28px 18px 24px;border-radius:18px}.qz-title{font-size:19px}}
 </style>
 </head>
 <body>
@@ -444,7 +477,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     </div>
     <div class="nav__right">
       <button class="sound-btn" id="soundBtn" data-cursor aria-label="Som"><span class="sound-bars"><i></i><i></i><i></i><i></i></span>Som</button>
-      <a href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Quero%20uma%20landing%20page%20por%20R%24%20689%2C90." class="btn btn--wa btn--xl" target="_blank" rel="noopener" data-cursor>
+      <a href="#" class="btn btn--wa btn--xl" data-cursor data-quiz>
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>WhatsApp</a>
       <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -477,7 +510,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
         </div>
 
         <div class="hero__ctas">
-          <a href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Quero%20uma%20landing%20page%20por%20R%24%20689%2C90.%20Pode%20me%20mandar%20o%20briefing%3F" class="btn btn--accent btn--xxl" target="_blank" rel="noopener" data-cursor>
+          <a href="#" class="btn btn--accent btn--xxl" data-cursor data-quiz>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
             Quero a minha por R$ 689,90</a>
           <a href="#processo" class="btn btn--ghost btn--xxl" data-cursor>Como funciona →</a>
@@ -634,7 +667,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
 
       <div class="compare-cta rv">
         <p>Você não precisa esperar um mês nem assumir mensalidade fixa. Sua página pode estar <strong>no ar essa semana</strong>.</p>
-        <a href="https://wa.me/5537999061651?text=Quero%20a%20landing%20page%20em%203%20dias%20por%20R%24%20689%2C90" class="btn btn--wa btn--xl" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Quero começar hoje pelo WhatsApp</a>
+        <a href="#" class="btn btn--wa btn--xl" data-cursor data-quiz><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Quero começar hoje pelo WhatsApp</a>
       </div>
     </div>
   </section>
@@ -691,8 +724,8 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
           <li><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Garantia de 7 dias</strong> ou seu dinheiro de volta</li>
         </ul>
         <div class="pricing__cta">
-          <a href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Quero%20fechar%20a%20landing%20page%20por%20R%24%20689%2C90.%20Como%20faz%20pra%20come%C3%A7ar%3F" class="btn btn--wa btn--xxl btn--block" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Quero a minha landing page agora</a>
-          <a href="https://wa.me/5537999061651?text=Tenho%20uma%20d%C3%BAvida%20sobre%20a%20landing%20page%20de%20R%24%20689%2C90." class="btn btn--ghost btn--xl btn--block" target="_blank" rel="noopener" data-cursor>Tenho uma dúvida antes</a>
+          <a href="#" class="btn btn--wa btn--xxl btn--block" data-cursor data-quiz><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Quero a minha landing page agora</a>
+          <a href="#" class="btn btn--ghost btn--xl btn--block" data-cursor data-quiz>Tenho uma dúvida antes</a>
         </div>
         <p class="pricing__safe"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.4 0 4.59.94 6.21 2.47"/></svg>Pagamento 100% seguro · PIX, boleto ou cartão · NF-e emitida</p>
       </div>
@@ -765,7 +798,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
       <h2 class="rv">Sua próxima venda pode estar a <span class="accent">3 dias</span> de distância.</h2>
       <p class="rv">Por R$ 689,90 à vista no PIX ou em 10x de R$ 79,50 no cartão, sua landing page profissional fica pronta ainda essa semana.</p>
       <div class="ctaf__btns rv">
-        <a href="https://wa.me/5537999061651?text=Quero%20fechar%20a%20landing%20page%20por%20R%24%20689%2C90%20agora!" class="btn btn--accent btn--xxl" style="width:100%;max-width:480px;justify-content:center" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Garantir minha vaga</a>
+        <a href="#" class="btn btn--accent btn--xxl" style="width:100%;max-width:480px;justify-content:center" data-cursor data-quiz><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Garantir minha vaga</a>
       </div>
       <p class="ctaf__hint">3 vagas restantes esta semana · entrega até sexta</p>
     </div>
@@ -795,8 +828,74 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   </footer>
 </div>
 
+<!-- MINI QUIZ MODAL -->
+<div id="quizModal" class="qz-overlay" role="dialog" aria-modal="true" aria-label="Briefing rápido">
+  <div class="qz-box">
+    <button class="qz-close" id="qzClose" aria-label="Fechar">×</button>
+    <div class="qz-progress">
+      <span class="qz-dot active" id="qzD1"></span>
+      <span class="qz-dot" id="qzD2"></span>
+      <span class="qz-dot" id="qzD3"></span>
+      <span class="qz-dot" id="qzD4"></span>
+    </div>
+
+    <!-- passo 1: nome -->
+    <div class="qz-step active" id="qzS1">
+      <span class="qz-icon">👋</span>
+      <h3 class="qz-title">Qual é o seu nome?</h3>
+      <p class="qz-sub">Para personalizarmos o atendimento.</p>
+      <input class="qz-input" id="qzNome" type="text" placeholder="Seu nome" autocomplete="given-name">
+      <button class="btn btn--accent qz-btn-next" id="qzN1">Continuar →</button>
+    </div>
+
+    <!-- passo 2: nicho -->
+    <div class="qz-step" id="qzS2">
+      <span class="qz-icon">🏢</span>
+      <h3 class="qz-title">Qual é o nicho da sua empresa?</h3>
+      <p class="qz-sub">Ex: Odontologia, Automotivo, Moda, Advocacia…</p>
+      <input class="qz-input" id="qzNicho" type="text" placeholder="Nicho / segmento" autocomplete="organization">
+      <button class="btn btn--accent qz-btn-next" id="qzN2">Continuar →</button>
+    </div>
+
+    <!-- passo 3: tipo de site -->
+    <div class="qz-step" id="qzS3">
+      <span class="qz-icon">🌐</span>
+      <h3 class="qz-title">Que tipo de site você precisa?</h3>
+      <p class="qz-sub">Selecione a opção que representa seu projeto.</p>
+      <div class="qz-options">
+        <button class="qz-option" data-value="Landing Page (1 página)">
+          <span class="qz-opt-icon">📄</span>
+          <span><strong>Landing Page</strong><small>Uma página focada em conversão</small></span>
+        </button>
+        <button class="qz-option" data-value="Site Institucional (várias páginas)">
+          <span class="qz-opt-icon">📚</span>
+          <span><strong>Site Institucional</strong><small>Várias páginas · Sobre, Serviços, Contato…</small></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- passo 4: escolha a unidade -->
+    <div class="qz-step" id="qzS4">
+      <span class="qz-icon">📍</span>
+      <h3 class="qz-title">Escolha a unidade de atendimento</h3>
+      <p class="qz-sub">Vamos te enviar para o WhatsApp certo.</p>
+      <div class="qz-summary" id="qzSummary"></div>
+      <div class="qz-wa-btns">
+        <a class="qz-wa-btn" id="qzMG" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.597 20.13c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.477-.913z"/></svg>
+          WhatsApp · Minas Gerais
+        </a>
+        <a class="qz-wa-btn" id="qzSP" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.597 20.13c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.477-.913z"/></svg>
+          WhatsApp · São Paulo
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- WHATSAPP FAB -->
-<a class="fab" href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20a%20landing%20page%20por%20R%24%20689%2C90." target="_blank" rel="noopener" data-cursor aria-label="WhatsApp">
+<a class="fab" href="#" data-cursor data-quiz aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.597 20.13c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.477-.913z"/></svg>
   <span class="fab__label">Fale com a gente</span>
 </a>
@@ -804,7 +903,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
 <!-- MOBILE STICKY -->
 <div class="msticky">
   <div class="msticky__price"><span class="from">A partir de</span><span class="val">R$ 689,90</span><span class="alt">10x de R$ 79,50</span></div>
-  <a href="https://wa.me/5537999061651?text=Quero%20a%20landing%20page%20por%20R%24%20689%2C90!" class="btn btn--wa btn--xl" target="_blank" rel="noopener" data-cursor><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Quero agora</a>
+  <a href="#" class="btn btn--wa btn--xl" data-cursor data-quiz><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Quero agora</a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -1081,7 +1180,85 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   })();
 
   /* ---- smooth anchors (fallback) ---- */
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var id=a.getAttribute('href');if(id.length<2)return;var el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:reduce?'auto':'smooth'});}});});
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    if(a.hasAttribute('data-quiz'))return; // quiz handles its own click
+    a.addEventListener('click',function(e){var id=a.getAttribute('href');if(id.length<2)return;var el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:reduce?'auto':'smooth'});}});
+  });
+
+  /* ---- mini quiz ---- */
+  (function(){
+    var overlay=document.getElementById('quizModal');
+    if(!overlay)return;
+    var steps=[document.getElementById('qzS1'),document.getElementById('qzS2'),document.getElementById('qzS3'),document.getElementById('qzS4')];
+    var dots=[document.getElementById('qzD1'),document.getElementById('qzD2'),document.getElementById('qzD3'),document.getElementById('qzD4')];
+    var nomeEl=document.getElementById('qzNome');
+    var nichoEl=document.getElementById('qzNicho');
+    var tipoVal='';
+
+    function openQuiz(){
+      nomeEl.value='';nichoEl.value='';tipoVal='';
+      overlay.querySelectorAll('.qz-option').forEach(function(o){o.classList.remove('selected');});
+      goStep(0);
+      overlay.classList.add('open');
+      document.body.style.overflow='hidden';
+      setTimeout(function(){nomeEl.focus();},250);
+    }
+    function closeQuiz(){
+      overlay.classList.remove('open');
+      document.body.style.overflow='';
+    }
+    function goStep(i){
+      steps.forEach(function(s,idx){s.classList.toggle('active',idx===i);});
+      dots.forEach(function(d,idx){d.classList.toggle('active',idx===i);});
+    }
+    function buildMsg(){
+      return 'Olá! Vim pelo site da Brota Web 🌱\n\n*Nome:* '+nomeEl.value.trim()+'\n*Nicho:* '+nichoEl.value.trim()+'\n*Tipo de site:* '+tipoVal;
+    }
+    function validate(el){
+      if(!el.value.trim()){
+        el.focus();
+        el.style.borderColor='#ff4d4d';
+        el.style.boxShadow='0 0 0 3px rgba(255,77,77,.15)';
+        setTimeout(function(){el.style.borderColor='';el.style.boxShadow='';},1200);
+        return false;
+      }
+      return true;
+    }
+
+    document.getElementById('qzN1').addEventListener('click',function(){if(validate(nomeEl))goStep(1);});
+    document.getElementById('qzN2').addEventListener('click',function(){if(validate(nichoEl))goStep(2);});
+    nomeEl.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('qzN1').click();});
+    nichoEl.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('qzN2').click();});
+
+    overlay.querySelectorAll('.qz-option').forEach(function(opt){
+      opt.addEventListener('click',function(){
+        overlay.querySelectorAll('.qz-option').forEach(function(o){o.classList.remove('selected');});
+        opt.classList.add('selected');
+        tipoVal=opt.getAttribute('data-value');
+        document.getElementById('qzSummary').innerHTML='<strong>'+nomeEl.value.trim()+'</strong> · '+nichoEl.value.trim()+' · '+tipoVal;
+        setTimeout(function(){goStep(3);},280);
+      });
+    });
+
+    function setWaLink(el,phone){
+      el.addEventListener('click',function(e){
+        e.preventDefault();
+        var msg=encodeURIComponent(buildMsg());
+        window.open('https://wa.me/'+phone+'?text='+msg,'_blank');
+        setTimeout(closeQuiz,400);
+      });
+    }
+    setWaLink(document.getElementById('qzMG'),'5537991926307');
+    setWaLink(document.getElementById('qzSP'),'5511937743705');
+
+    document.getElementById('qzClose').addEventListener('click',closeQuiz);
+    overlay.addEventListener('click',function(e){if(e.target===overlay)closeQuiz();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('open'))closeQuiz();});
+
+    document.querySelectorAll('[data-quiz]').forEach(function(el){
+      el.addEventListener('click',function(e){e.preventDefault();openQuiz();});
+    });
+  })();
 })();
 </script>
 </body>
