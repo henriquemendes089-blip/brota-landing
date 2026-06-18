@@ -345,7 +345,13 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   .fab{display:none}
   body{padding-bottom:78px}
 }
+@keyframes slideFromLeft{from{opacity:0;transform:translateX(-44px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideFromRight{from{opacity:0;transform:translateX(44px)}to{opacity:1;transform:translateX(0)}}
 @media(max-width:860px){
+  .mob-reveal-left{opacity:0;transform:translateX(-44px)}
+  .mob-reveal-right{opacity:0;transform:translateX(44px)}
+  .mob-reveal-left.mob-in{animation:slideFromLeft .5s cubic-bezier(.22,1,.36,1) forwards}
+  .mob-reveal-right.mob-in{animation:slideFromRight .5s cubic-bezier(.22,1,.36,1) forwards}
   .features{grid-template-columns:repeat(2,1fr)}
   .process{grid-template-columns:1fr}
   .tms{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:12px;grid-template-columns:unset}
@@ -931,6 +937,25 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   /* ---- som ambiente ---- */
   var sb=document.getElementById('soundBtn'),ac=null,osc=null,gn=null,on=false;
   sb.addEventListener('click',function(){on=!on;sb.classList.toggle('on',on);if(on){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();osc=ac.createOscillator();gn=ac.createGain();osc.type='sine';osc.frequency.value=72;gn.gain.value=0;osc.connect(gn);gn.connect(ac.destination);osc.start();gn.gain.linearRampToValueAtTime(0.04,ac.currentTime+1.2);}catch(e){}}else if(gn&&ac){gn.gain.linearRampToValueAtTime(0,ac.currentTime+0.4);setTimeout(function(){try{osc.stop();}catch(e){}},500);}});
+
+  /* ---- scroll reveal direcional mobile ---- */
+  (function(){
+    if(window.innerWidth>860)return;
+    var cards=document.querySelectorAll('.feature,.step,.cmc');
+    cards.forEach(function(el,i){
+      el.classList.add(i%2===0?'mob-reveal-left':'mob-reveal-right');
+    });
+    if(!('IntersectionObserver' in window)){
+      cards.forEach(function(el){el.classList.add('mob-in');});
+      return;
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('mob-in');io.unobserve(e.target);}
+      });
+    },{threshold:0.15});
+    cards.forEach(function(el){io.observe(el);});
+  })();
 
   /* ---- faq accordion animado ---- */
   document.querySelectorAll('.faq__item').forEach(function(item){
