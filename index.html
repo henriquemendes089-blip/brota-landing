@@ -301,7 +301,7 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 .faq__q::-webkit-details-marker{display:none}
 .faq__q::after{content:'+';font-size:22px;color:var(--neon);transition:transform .3s;flex-shrink:0}
 .faq__item[open] .faq__q::after{transform:rotate(45deg)}
-.faq__a{padding:0 22px 22px;font-size:14.5px;font-weight:300;color:var(--muted);line-height:1.7}
+.faq__a{padding:0 22px;font-size:14.5px;font-weight:300;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .38s ease,padding-bottom .38s ease}
 .faq__a strong{color:var(--text);font-weight:600}
 .faq__a a{color:var(--lime);font-weight:600;text-decoration:underline}
 
@@ -932,13 +932,30 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   var sb=document.getElementById('soundBtn'),ac=null,osc=null,gn=null,on=false;
   sb.addEventListener('click',function(){on=!on;sb.classList.toggle('on',on);if(on){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();osc=ac.createOscillator();gn=ac.createGain();osc.type='sine';osc.frequency.value=72;gn.gain.value=0;osc.connect(gn);gn.connect(ac.destination);osc.start();gn.gain.linearRampToValueAtTime(0.04,ac.currentTime+1.2);}catch(e){}}else if(gn&&ac){gn.gain.linearRampToValueAtTime(0,ac.currentTime+0.4);setTimeout(function(){try{osc.stop();}catch(e){}},500);}});
 
-  /* ---- faq accordion ---- */
+  /* ---- faq accordion animado ---- */
   document.querySelectorAll('.faq__item').forEach(function(item){
-    item.addEventListener('toggle',function(){
-      if(item.open){
-        document.querySelectorAll('.faq__item[open]').forEach(function(other){
-          if(other!==item)other.removeAttribute('open');
-        });
+    var summary=item.querySelector('.faq__q');
+    var body=item.querySelector('.faq__a');
+    summary.addEventListener('click',function(e){
+      e.preventDefault();
+      var isOpen=item.hasAttribute('open');
+      // fecha todos os outros
+      document.querySelectorAll('.faq__item[open]').forEach(function(other){
+        if(other!==item){
+          var ob=other.querySelector('.faq__a');
+          ob.style.maxHeight='0';
+          ob.style.paddingBottom='0';
+          setTimeout(function(){other.removeAttribute('open');},380);
+        }
+      });
+      if(isOpen){
+        body.style.maxHeight='0';
+        body.style.paddingBottom='0';
+        setTimeout(function(){item.removeAttribute('open');},380);
+      }else{
+        item.setAttribute('open','');
+        body.style.maxHeight=body.scrollHeight+'px';
+        body.style.paddingBottom='22px';
       }
     });
   });
