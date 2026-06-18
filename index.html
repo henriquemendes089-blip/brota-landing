@@ -116,33 +116,34 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 
 /* HERO */
 .hero{position:relative;z-index:10;padding:80px 0 100px}
-.hero__copy{max-width:680px;margin:0 auto;text-align:center}
+.hero__copy{max-width:1020px;margin:0 auto;text-align:center}
 .hero__live{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-size:12px;letter-spacing:.06em;color:var(--lime);border:1px solid var(--line);background:rgba(163,230,53,.06);padding:7px 14px;border-radius:30px;margin-bottom:28px}
 .hero__live-dot{width:7px;height:7px;border-radius:50%;background:var(--neon);animation:pdot 2s infinite}
-.hero h1{font-size:clamp(42px,6vw,78px);line-height:1.0;letter-spacing:-.03em}
+.hero h1{font-size:clamp(42px,5.8vw,82px);line-height:1.0;letter-spacing:-.03em}
 .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.2em;margin-bottom:-.2em}
 .hero h1 .ln span{display:block;transform:translateY(110%)}
-.hero__sub{margin-top:22px;font-size:clamp(16px,1.7vw,19px);font-weight:300;color:var(--muted);line-height:1.65;max-width:58ch;margin-left:auto;margin-right:auto}
+.hero__sub{margin-top:20px;font-size:clamp(15px,1.5vw,17px);font-weight:300;color:var(--muted);line-height:1.65;max-width:68ch;margin-left:auto;margin-right:auto}
 .hero__sub strong{color:var(--lime);font-weight:500}
-.pillars{list-style:none;margin:32px 0 0;display:flex;flex-direction:column;gap:14px;text-align:left}
-.pillars li{display:flex;gap:14px;align-items:flex-start}
-.pillars .pi{flex-shrink:0;width:42px;height:42px;border-radius:11px;background:rgba(163,230,53,.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.pillars{list-style:none;margin:32px 0 0;display:flex;flex-direction:row;gap:14px;justify-content:center}
+.pillars li{display:flex;flex-direction:column;gap:10px;align-items:flex-start;flex:1;padding:20px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(163,230,53,.04)}
+.pillars .pi{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:rgba(163,230,53,.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
 .pillars .pi svg{width:20px;height:20px;stroke:var(--neon);fill:none}
 .pillars strong{display:block;font-family:'Plus Jakarta Sans';font-weight:700;font-size:15px;color:var(--text)}
-.pillars span{display:block;font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.5;margin-top:2px}
-.hero__price{display:flex;align-items:center;gap:18px;margin:36px auto 26px;padding:20px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card);backdrop-filter:blur(6px);max-width:420px;justify-content:center}
+.pillars span{display:block;font-size:13px;font-weight:300;color:var(--muted);line-height:1.5}
+.hero__price{display:flex;align-items:center;gap:22px;margin:36px auto 26px;padding:22px 32px;border:1px solid var(--line);border-radius:16px;background:var(--card);backdrop-filter:blur(6px);max-width:580px;justify-content:center}
 .hero__price-tag{display:flex;align-items:baseline;gap:4px;font-family:'Plus Jakarta Sans';font-weight:800;color:var(--text)}
 .hero__price-tag .multi{font-size:18px;color:var(--lime)}
 .hero__price-tag .currency{font-size:20px}
-.hero__price-tag .amount{font-size:52px;line-height:1}
-.hero__price-meta{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:3px;text-align:left}
+.hero__price-tag .amount{font-size:56px;line-height:1}
+.hero__price-meta{font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:4px;text-align:left}
 .hero__price-meta strong{color:var(--text)}
 .hero__price-meta .strike{text-decoration:line-through;opacity:.6}
-.hero__ctas{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:32px;justify-content:center}
-.hero__trust{display:flex;flex-direction:column;gap:10px;margin-bottom:0;align-items:flex-start;max-width:420px;margin-left:auto;margin-right:auto}
-.hero__trust div{display:flex;align-items:baseline;gap:9px;font-size:13.5px;color:var(--muted);font-weight:300;text-align:left}
+.hero__ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px;justify-content:center}
+.hero__ctas .btn--xxl{flex:1;max-width:320px;justify-content:center}
+.hero__trust{display:flex;flex-direction:row;gap:22px;flex-wrap:nowrap;justify-content:center;margin-bottom:0}
+.hero__trust div{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);font-weight:300;white-space:nowrap}
 .hero__trust strong{color:var(--text);font-weight:600}
-.hero__trust svg{width:16px;height:16px;stroke:var(--neon);fill:none;flex-shrink:0;margin-top:2px}
+.hero__trust svg{width:14px;height:14px;stroke:var(--neon);fill:none;flex-shrink:0}
 
 /* hero — card 3D que endireita no scroll (efeito tipo Aceternity, em vanilla) */
 .tilt3d-wrap{perspective:1400px;display:none}
