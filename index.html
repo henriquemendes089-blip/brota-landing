@@ -993,8 +993,8 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
         if(audio.paused){audio.currentTime=30;audio.play();}
         fadeTo(0.45,1.5);
       }else{
-        fadeTo(0,1.5);
-        setTimeout(function(){if(audio.volume===0)audio.pause();},1600);
+        audio.pause();
+        audio.volume=0;
       }
     });
   })();
