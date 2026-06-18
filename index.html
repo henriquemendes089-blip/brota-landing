@@ -193,9 +193,10 @@ nav.scrolled{background:rgba(6,11,8,.75);backdrop-filter:blur(18px);-webkit-back
 .pf-label{text-align:center;font-family:'Plus Jakarta Sans';font-weight:700;font-size:16px;color:var(--text)}
 .pf-label span{display:block;font-family:'Space Grotesk';font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--muted);margin-top:4px}
 .pf-arrow{position:absolute;top:42%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:rgba(10,19,13,.82);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s,border-color .25s}
-.pf-arrow:hover{background:var(--neon);border-color:var(--neon)}
 .pf-arrow svg{width:22px;height:22px;stroke:var(--text)}
-.pf-arrow:hover svg{stroke:#06210f}
+.pf-arrow:active{background:var(--neon);border-color:var(--neon)}
+.pf-arrow:active svg{stroke:#06210f}
+@media(hover:hover){.pf-arrow:hover{background:var(--neon);border-color:var(--neon)}.pf-arrow:hover svg{stroke:#06210f}}
 .pf-prev{left:4px}.pf-next{right:4px}
 .pf-dots{display:flex;gap:8px;justify-content:center;margin-top:24px}
 .pf-dots button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22);border:none;padding:0;cursor:pointer;transition:background .25s,width .25s}
