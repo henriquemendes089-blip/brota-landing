@@ -115,68 +115,34 @@ nav.scrolled{background:rgba(6,11,8,.8);backdrop-filter:blur(14px);border-bottom
 .sec-head .lead{margin-top:20px;font-size:clamp(16px,1.7vw,19px);font-weight:300;color:var(--muted);line-height:1.65}
 
 /* HERO */
-.hero{position:relative;z-index:10;padding:70px 0 90px}
-.hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:stretch}
-.hero__live{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-size:12px;letter-spacing:.06em;color:var(--lime);border:1px solid var(--line);background:rgba(163,230,53,.06);padding:7px 14px;border-radius:30px;margin-bottom:24px}
+.hero{position:relative;z-index:10;padding:80px 0 100px}
+.hero__copy{max-width:780px}
+.hero__live{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-size:12px;letter-spacing:.06em;color:var(--lime);border:1px solid var(--line);background:rgba(163,230,53,.06);padding:7px 14px;border-radius:30px;margin-bottom:28px}
 .hero__live-dot{width:7px;height:7px;border-radius:50%;background:var(--neon);animation:pdot 2s infinite}
-.hero h1{font-size:clamp(38px,5.6vw,72px);line-height:1.0;letter-spacing:-.03em}
+.hero h1{font-size:clamp(42px,6vw,78px);line-height:1.0;letter-spacing:-.03em}
 .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.2em;margin-bottom:-.2em}
 .hero h1 .ln span{display:block;transform:translateY(110%)}
-.hero__sub{margin-top:24px;font-size:clamp(16px,1.7vw,19px);font-weight:300;color:var(--muted);line-height:1.6;max-width:54ch}
+.hero__sub{margin-top:22px;font-size:clamp(16px,1.7vw,19px);font-weight:300;color:var(--muted);line-height:1.65;max-width:58ch}
 .hero__sub strong{color:var(--lime);font-weight:500}
-.pillars{list-style:none;margin:30px 0 0;display:flex;flex-direction:column;gap:14px}
-.pillars li{display:flex;gap:13px;align-items:flex-start}
-.pillars .pi{flex-shrink:0;width:40px;height:40px;border-radius:11px;background:rgba(163,230,53,.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
-.pillars .pi svg{width:20px;height:20px;stroke:var(--neon);fill:none}
-.pillars strong{display:block;font-family:'Plus Jakarta Sans';font-weight:700;font-size:15px}
-.pillars span{font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.5}
-.hero__price{display:flex;align-items:center;gap:18px;margin:32px 0 24px;padding:18px 22px;border:1px solid var(--line);border-radius:16px;background:var(--card);backdrop-filter:blur(6px)}
+.pillars{list-style:none;margin:28px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.pillars li{display:inline-flex;align-items:center;gap:8px;font-family:'Plus Jakarta Sans';font-size:13px;font-weight:600;color:var(--text);border:1px solid var(--line);background:rgba(163,230,53,.06);padding:9px 16px;border-radius:30px}
+.pillars .pi{display:flex;align-items:center}
+.pillars .pi svg{width:15px;height:15px;stroke:var(--neon);fill:none}
+.pillars strong{font-size:13px;font-weight:600}
+.pillars span{display:none}
+.hero__price{display:flex;align-items:center;gap:18px;margin:32px 0 24px;padding:20px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card);backdrop-filter:blur(6px);max-width:420px}
 .hero__price-tag{display:flex;align-items:baseline;gap:4px;font-family:'Plus Jakarta Sans';font-weight:800;color:var(--text)}
 .hero__price-tag .multi{font-size:18px;color:var(--lime)}
 .hero__price-tag .currency{font-size:20px}
-.hero__price-tag .amount{font-size:48px;line-height:1}
+.hero__price-tag .amount{font-size:52px;line-height:1}
 .hero__price-meta{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
 .hero__price-meta strong{color:var(--text)}
 .hero__price-meta .strike{text-decoration:line-through;opacity:.6}
-.hero__ctas{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:24px}
-.hero__trust{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
-.hero__trust div{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--muted);font-weight:300}
+.hero__ctas{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:28px}
+.hero__trust{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:0}
+.hero__trust div{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:300}
 .hero__trust strong{color:var(--text);font-weight:600}
-.hero__trust svg{width:17px;height:17px;stroke:var(--neon);fill:none;flex-shrink:0}
-.hero__social{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.avatars{display:flex}
-.avatars span{width:34px;height:34px;border-radius:50%;border:2px solid var(--bg);margin-left:-9px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-size:11px;font-weight:700;color:#06210f;background:var(--lime)}
-.avatars span:first-child{margin-left:0}
-.avatars span:nth-child(2){background:var(--fruit)}.avatars span:nth-child(3){background:#7dd3fc}.avatars span:nth-child(4){background:#fca5a5}.avatars span:nth-child(5){background:rgba(255,255,255,.12);color:var(--text)}
-.rating-stars{display:flex;gap:2px}
-.rating-stars svg{width:15px;height:15px;fill:var(--fruit)}
-.rating-text{font-size:13px;color:var(--muted)}
-.rating-text strong{color:var(--text)}
-
-/* hero stage (cards de vidro) */
-.stage{position:relative;display:flex;flex-direction:column;gap:16px;justify-content:space-between;height:100%}
-.gincl{list-style:none;margin:0;display:flex;flex-direction:column;gap:11px}
-.gincl li{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:300;color:var(--text)}
-.gincl svg{width:17px;height:17px;stroke:var(--neon);fill:none;flex-shrink:0}
-.hero__proof{display:flex;align-items:center;gap:14px}
-.gcard{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(163,230,53,.05),rgba(255,255,255,.02));backdrop-filter:blur(10px);padding:20px}
-.tl__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.tl__title{font-family:'Plus Jakarta Sans';font-weight:700;font-size:15px}
-.tl__live{font-family:'Space Grotesk';font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--neon);border:1px solid var(--line);padding:3px 9px;border-radius:20px}
-.tl__steps{display:flex;flex-direction:column;gap:14px}
-.tl__step{display:flex;gap:12px;align-items:center}
-.tl__dot{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.tl__dot svg{width:14px;height:14px;stroke:var(--neon);fill:none}
-.tl__step--done .tl__dot{background:var(--neon);border-color:var(--neon)}.tl__step--done .tl__dot svg{stroke:#06210f}
-.tl__step--cur .tl__dot{border-color:var(--neon);box-shadow:0 0 0 4px rgba(163,230,53,.12)}
-.tl__step--cur .tl__dot::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--neon)}
-.tl__day{font-family:'Space Grotesk';font-size:11px;color:var(--muted)}
-.tl__label{font-size:14px;font-weight:500}
-.badgecard{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.badgecard .bc-l .bt{font-family:'Space Grotesk';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.badgecard .bc-l .bp{font-family:'Plus Jakarta Sans';font-weight:800;font-size:32px}
-.badgecard .bc-l .bp small{font-size:.5em}
-.badgecard .bc-r{font-family:'Plus Jakarta Sans';font-weight:700;font-size:13px;color:var(--neon);text-align:right}
+.hero__trust svg{width:16px;height:16px;stroke:var(--neon);fill:none;flex-shrink:0}
 
 /* hero — card 3D que endireita no scroll (efeito tipo Aceternity, em vanilla) */
 .tilt3d-wrap{perspective:1400px;display:none}
@@ -373,8 +339,6 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   body{padding-bottom:78px}
 }
 @media(max-width:860px){
-  .hero__grid{grid-template-columns:1fr;gap:40px}
-  .stage{max-width:440px;margin:0 auto;height:auto;justify-content:flex-start}
   .features{grid-template-columns:repeat(2,1fr)}
   .process,.tms{grid-template-columns:1fr}
   .foot__grid{grid-template-columns:1fr 1fr}
@@ -439,76 +403,37 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
   <!-- HERO -->
   <section class="hero" id="topo">
     <div class="wrap">
-      <div class="hero__grid">
-        <div class="hero__copy">
-          <span class="hero__live"><span class="hero__live-dot"></span>Aceitando 3 projetos esta semana</span>
-          <h1 id="heroH1">
-            <span class="ln"><span>Uma landing page</span></span>
-            <span class="ln"><span>que faz seu negócio</span></span>
-            <span class="ln"><span><em class="accent" style="font-style:normal">brotar</em> em 3 dias úteis.</span></span>
-          </h1>
-          <p class="hero__sub">Design, copy e código no mesmo padrão de agência. A diferença é o prazo de <strong>3 dias úteis</strong> e o pagamento único, <strong>sem mensalidade</strong>. Somos o adubo do seu negócio.</p>
+      <div class="hero__copy">
+        <span class="hero__live"><span class="hero__live-dot"></span>Aceitando 3 projetos esta semana</span>
+        <h1 id="heroH1">
+          <span class="ln"><span>Uma landing page</span></span>
+          <span class="ln"><span>que faz seu negócio</span></span>
+          <span class="ln"><span><em class="accent" style="font-style:normal">brotar</em> em 3 dias úteis.</span></span>
+        </h1>
+        <p class="hero__sub">Design, copy e código no mesmo padrão de agência. A diferença é o prazo de <strong>3 dias úteis</strong> e o pagamento único, <strong>sem mensalidade</strong>. Somos o adubo do seu negócio.</p>
 
-          <ul class="pillars">
-            <li><span class="pi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.6L20 9.3l-4.4 3.9L17 19l-5-3-5 3 1.4-5.8L4 9.3l5.8-.7z"/></svg></span><div><strong>Design profissional</strong><span>Tipografia, hierarquia e identidade pensadas pra primeira impressão.</span></div></li>
-            <li><span class="pi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span><div><strong>Copy que vende</strong><span>Texto persuasivo com gatilhos, prova social e CTAs testados.</span></div></li>
-            <li><span class="pi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><div><strong>Performance 90+</strong><span>Carrega abaixo de 2s, SEO técnico e schema. Pronta pro Google.</span></div></li>
-          </ul>
+        <ul class="pillars">
+          <li><span class="pi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.6L20 9.3l-4.4 3.9L17 19l-5-3-5 3 1.4-5.8L4 9.3l5.8-.7z"/></svg></span><strong>Design profissional</strong></li>
+          <li><span class="pi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span><strong>Copy que vende</strong></li>
+          <li><span class="pi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><strong>Performance 90+</strong></li>
+        </ul>
 
-          <div class="hero__price">
-            <div class="hero__price-tag"><span class="multi">10x</span><span class="currency">R$</span><span class="amount">79</span><span class="multi">,50</span></div>
-            <div class="hero__price-meta"><span>ou <strong>R$ 689,90</strong> à vista no PIX</span><span><span class="strike">de R$ 1.490</span> · economize 54%</span></div>
-          </div>
-
-          <div class="hero__ctas">
-            <a href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Quero%20uma%20landing%20page%20por%20R%24%20689%2C90.%20Pode%20me%20mandar%20o%20briefing%3F" class="btn btn--accent btn--xxl" target="_blank" rel="noopener" data-cursor>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-              Quero a minha por R$ 689,90</a>
-            <a href="#processo" class="btn btn--ghost btn--xxl" data-cursor>Como funciona →</a>
-          </div>
-
-          <div class="hero__trust">
-            <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Garantia de 7 dias</strong> · não gostou, devolvemos 100%</span></div>
-            <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Pagamento seguro</strong> · PIX, boleto ou cartão · sem mensalidade</span></div>
-            <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>1 rodada de revisão grátis</strong> · ajustes finais sem custo</span></div>
-          </div>
-
+        <div class="hero__price">
+          <div class="hero__price-tag"><span class="multi">10x</span><span class="currency">R$</span><span class="amount">79</span><span class="multi">,50</span></div>
+          <div class="hero__price-meta"><span>ou <strong>R$ 689,90</strong> à vista no PIX</span><span><span class="strike">de R$ 1.490</span> · economize 54%</span></div>
         </div>
 
-        <div class="hero__visual" aria-hidden="true">
-          <div class="stage">
-            <article class="gcard">
-              <div class="tl__head"><div class="tl__title">Sua landing em 3 dias</div><span class="tl__live">ao vivo</span></div>
-              <div class="tl__steps">
-                <div class="tl__step tl__step--done"><div class="tl__dot"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="tl__day">Dia 1</div><div class="tl__label">Briefing + identidade</div></div></div>
-                <div class="tl__step tl__step--cur"><div class="tl__dot"></div><div><div class="tl__day">Dia 2</div><div class="tl__label">Design + copy + dev</div></div></div>
-                <div class="tl__step"><div class="tl__dot"></div><div><div class="tl__day">Dia 3</div><div class="tl__label">Revisão + entrega</div></div></div>
-              </div>
-            </article>
-            <article class="gcard">
-              <div class="tl__head"><div class="tl__title">Tudo que vem junto</div></div>
-              <ul class="gincl">
-                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first + responsivo</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Copy de venda profissional</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEO técnico — 90+ no Google</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp integrado</li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 revisão grátis + garantia de 7 dias</li>
-              </ul>
-            </article>
-            <article class="gcard hero__proof">
-              <div class="avatars"><span>RC</span><span>JM</span><span>LS</span><span>PA</span><span>+200</span></div>
-              <div>
-                <div class="rating-stars" aria-label="4,9 de 5">
-                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                </div>
-                <div class="rating-text"><strong>4,9 / 5</strong> · +200 clientes em todo o Brasil</div>
-              </div>
-            </article>
-          </div>
+        <div class="hero__ctas">
+          <a href="https://wa.me/5537999061651?text=Ol%C3%A1!%20Quero%20uma%20landing%20page%20por%20R%24%20689%2C90.%20Pode%20me%20mandar%20o%20briefing%3F" class="btn btn--accent btn--xxl" target="_blank" rel="noopener" data-cursor>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            Quero a minha por R$ 689,90</a>
+          <a href="#processo" class="btn btn--ghost btn--xxl" data-cursor>Como funciona →</a>
+        </div>
+
+        <div class="hero__trust">
+          <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Garantia de 7 dias</strong></span></div>
+          <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Pagamento seguro</strong></span></div>
+          <div><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>1 revisão grátis</strong></span></div>
         </div>
       </div>
     </div>
