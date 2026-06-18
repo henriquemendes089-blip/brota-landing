@@ -180,7 +180,8 @@ nav.scrolled{background:rgba(6,11,8,.75);backdrop-filter:blur(18px);-webkit-back
 .pf-viewport{position:relative}
 .pf-item{display:none;flex-direction:column;align-items:center;gap:18px}
 .pf-item.active{display:flex;animation:pfFade .45s ease}
-@keyframes pfFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes pfFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(max-width:860px){.pf-item.active{animation:pfFade .2s ease}}
 .pf-device{position:relative;width:100%;max-width:960px;border:1px solid #2b322c;border-radius:16px;background:#171c18;padding:8px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
 .pf-bar{display:flex;align-items:center;gap:6px;padding:5px 10px 9px}
 .pf-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
@@ -908,12 +909,13 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     frames.forEach(function(f){f.addEventListener('load',onFrameLoad);});
     function loadActive(){
       if(!inView)return;
+      // carrega atual + vizinhos, nunca descarrega
+      var toLoad=[current,(current+1)%n,(current-1+n)%n];
       frames.forEach(function(f,i){
-        if(i===current){if(!f.getAttribute('src'))f.src=f.getAttribute('data-src');}
-        else if(f.getAttribute('src')){f.classList.remove('loaded');f.removeAttribute('src');}
+        if(toLoad.indexOf(i)!==-1&&!f.getAttribute('src'))f.src=f.getAttribute('data-src');
       });
     }
-    function unloadAll(){frames.forEach(function(f){if(f.getAttribute('src')){f.classList.remove('loaded');f.removeAttribute('src');}});}
+    function unloadAll(){/* mantém iframes carregados para não recarregar */}
     function go(i){
       current=(i%n+n)%n;
       items.forEach(function(it,idx){it.classList.toggle('active',idx===current);});
@@ -934,7 +936,7 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
       var sx=0,sy=0,ifrT=0,dir=null,on=false,scl=1;
       ov.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;var t=e.touches[0];sx=t.clientX;sy=t.clientY;dir=null;on=true;scl=(sc.clientWidth/390)||1;try{ifrT=(ifr.contentWindow&&ifr.contentWindow.scrollY)||0;}catch(_){ifrT=0;}},{passive:false});
       ov.addEventListener('touchmove',function(e){if(!on)return;var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(!dir){if(Math.abs(dx)>8||Math.abs(dy)>8){dir=Math.abs(dx)>Math.abs(dy)?'h':'v';}else return;}e.preventDefault();if(dir==='v'){try{ifr.contentWindow.scrollTo(0,ifrT-dy/scl);}catch(_){}}},{passive:false});
-      ov.addEventListener('touchend',function(e){if(dir==='h'){var t=e.changedTouches[0],dx=t.clientX-sx;if(dx<=-40)go(current+1);else if(dx>=40)go(current-1);}on=false;dir=null;},{passive:false});
+      ov.addEventListener('touchend',function(e){if(dir==='h'){var t=e.changedTouches[0],dx=t.clientX-sx;if(dx<=-28)go(current+1);else if(dx>=28)go(current-1);}on=false;dir=null;},{passive:false});
       ov.addEventListener('touchcancel',function(){on=false;dir=null;});
     });
   })();
