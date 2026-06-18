@@ -941,9 +941,61 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
     addEventListener('mousemove',function(e){var t='translate('+e.clientX+'px,'+e.clientY+'px) translate(-50%,-50%)';dot.style.transform=t;cur.style.transform=t;},{passive:true});
     document.querySelectorAll('[data-cursor],a,button,summary').forEach(function(el){el.addEventListener('mouseenter',function(){cur.classList.add('grow');});el.addEventListener('mouseleave',function(){cur.classList.remove('grow');});});}
 
-  /* ---- som ambiente ---- */
-  var sb=document.getElementById('soundBtn'),ac=null,osc=null,gn=null,on=false;
-  sb.addEventListener('click',function(){on=!on;sb.classList.toggle('on',on);if(on){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();osc=ac.createOscillator();gn=ac.createGain();osc.type='sine';osc.frequency.value=72;gn.gain.value=0;osc.connect(gn);gn.connect(ac.destination);osc.start();gn.gain.linearRampToValueAtTime(0.04,ac.currentTime+1.2);}catch(e){}}else if(gn&&ac){gn.gain.linearRampToValueAtTime(0,ac.currentTime+0.4);setTimeout(function(){try{osc.stop();}catch(e){}},500);}});
+  /* ---- som ambiente espacial ---- */
+  (function(){
+    var sb=document.getElementById('soundBtn'),ac=null,master=null,allNodes=[],on=false;
+    function build(){
+      ac=new(window.AudioContext||window.webkitAudioContext)();
+      master=ac.createGain();master.gain.value=0;master.connect(ac.destination);
+
+      // delay / eco espacial
+      var delay=ac.createDelay(4);delay.delayTime.value=1.8;
+      var delayGain=ac.createGain();delayGain.gain.value=0.28;
+      var feed=ac.createGain();feed.gain.value=0.4;
+      delay.connect(delayGain);delayGain.connect(master);
+      delay.connect(feed);feed.connect(delay);
+
+      // drone: camadas graves detonadas
+      [{f:40,t:'sine',v:0.32},{f:60,t:'sine',v:0.18},{f:80.4,t:'triangle',v:0.10},
+       {f:120,t:'sine',v:0.07},{f:160.6,t:'sine',v:0.04}].forEach(function(d){
+        var o=ac.createOscillator(),g=ac.createGain();
+        o.type=d.t;o.frequency.value=d.f;g.gain.value=d.v;
+        o.connect(g);g.connect(master);g.connect(delay);
+        o.start();allNodes.push(o);
+      });
+
+      // shimmer alto: harmônicos sutis
+      [{f:480,v:0.018},{f:720,v:0.012},{f:960,v:0.008}].forEach(function(d){
+        var o=ac.createOscillator(),g=ac.createGain();
+        o.type='sine';o.frequency.value=d.f;g.gain.value=d.v;
+        // vibrato suave
+        var lfo=ac.createOscillator(),lg=ac.createGain();
+        lfo.frequency.value=0.18+d.f/10000;lg.gain.value=2.5;
+        lfo.connect(lg);lg.connect(o.frequency);lfo.start();
+        o.connect(g);g.connect(master);o.start();allNodes.push(o,lfo);
+      });
+
+      // LFO de respiração no master
+      var breathLfo=ac.createOscillator(),breathGain=ac.createGain();
+      breathLfo.frequency.value=0.04;breathGain.gain.value=0.06;
+      breathLfo.connect(breathGain);breathGain.connect(master.gain);
+      breathLfo.start();allNodes.push(breathLfo);
+    }
+    sb.addEventListener('click',function(){
+      on=!on;sb.classList.toggle('on',on);
+      if(on){
+        try{
+          if(!ac)build();
+          if(ac.state==='suspended')ac.resume();
+          master.gain.cancelScheduledValues(ac.currentTime);
+          master.gain.linearRampToValueAtTime(0.55,ac.currentTime+3);
+        }catch(e){}
+      }else if(master&&ac){
+        master.gain.cancelScheduledValues(ac.currentTime);
+        master.gain.linearRampToValueAtTime(0,ac.currentTime+2);
+      }
+    });
+  })();
 
   /* ---- word cycler hero ---- */
   (function(){
