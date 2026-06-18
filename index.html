@@ -98,10 +98,15 @@ nav.scrolled{background:rgba(6,11,8,.75);backdrop-filter:blur(18px);-webkit-back
 .nav__right{display:flex;align-items:center;gap:14px}
 .sound-btn{display:flex;align-items:center;gap:7px;background:none;border:none;color:var(--muted);cursor:none;font-family:'Space Grotesk';font-size:11px;letter-spacing:.12em;text-transform:uppercase}
 .sound-bars{display:flex;align-items:flex-end;gap:2px;height:13px}
-.sound-bars i{width:2px;background:var(--lime);height:4px;border-radius:2px}
-.sound-btn.on .sound-bars i{animation:eq .8s ease-in-out infinite}
-.sound-bars i:nth-child(2){animation-delay:.15s}.sound-bars i:nth-child(3){animation-delay:.3s}.sound-bars i:nth-child(4){animation-delay:.45s}
-@keyframes eq{0%,100%{height:4px}50%{height:13px}}
+.sound-bars i{width:2px;background:var(--lime);height:4px;border-radius:2px;transition:height .1s}
+@keyframes eq1{0%{height:4px}20%{height:11px}45%{height:6px}60%{height:13px}80%{height:5px}100%{height:4px}}
+@keyframes eq2{0%{height:7px}25%{height:4px}50%{height:12px}70%{height:5px}85%{height:10px}100%{height:7px}}
+@keyframes eq3{0%{height:4px}15%{height:13px}40%{height:7px}65%{height:4px}80%{height:11px}100%{height:4px}}
+@keyframes eq4{0%{height:9px}30%{height:4px}55%{height:13px}75%{height:6px}90%{height:10px}100%{height:9px}}
+.sound-btn.on .sound-bars i:nth-child(1){animation:eq1 .65s ease-in-out infinite}
+.sound-btn.on .sound-bars i:nth-child(2){animation:eq2 .9s ease-in-out infinite .1s}
+.sound-btn.on .sound-bars i:nth-child(3){animation:eq3 .75s ease-in-out infinite .3s}
+.sound-btn.on .sound-bars i:nth-child(4){animation:eq4 .55s ease-in-out infinite .05s}
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:6px}
 .nav-toggle span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
 
