@@ -973,9 +973,13 @@ footer{position:relative;z-index:10;padding:70px 0 36px;border-top:1px solid var
         sb.classList.add('on');
       }).catch(function(){});
     }
-    // tenta no primeiro clique ou toque do usuário
+    // dispara no primeiro scroll (mouse ou dedo) — desktop e mobile
+    document.addEventListener('wheel',tryPlay,{once:true,passive:true});
+    document.addEventListener('touchmove',tryPlay,{once:true,passive:true});
+    document.addEventListener('scroll',tryPlay,{once:true,passive:true});
+    // fallback: primeiro clique/toque
     document.addEventListener('click',tryPlay,{once:true});
-    document.addEventListener('touchstart',tryPlay,{once:true});
+    document.addEventListener('touchstart',tryPlay,{once:true,passive:true});
     // tenta direto (funciona se política do browser permitir)
     tryPlay();
 
